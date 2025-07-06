@@ -1,0 +1,25 @@
+scrapping_task:
+  description: >
+    Visit the article page using the provided URL {url}, and extract the article's title, author name (if available),
+    and main body text. Make sure to clean up the result by removing ads, sidebars, comments, and navigation menus.
+  expected_output: >
+    Clean article content including title, author, and full main text
+  agent: scrapper
+
+summerizing_task:
+  description: >
+    Summarize the extracted article in the following format:
+
+    Title:
+    Author:
+    Topic:
+    Subtopics:
+      1. ...
+      2. ...
+      3. ...
+    Conclusion: (3-sentence summary)
+
+    Be concise and well-structured. Focus on core content and avoid fluff.
+  expected_output: >
+    A structured article summary formatted as requested above and as markdown without '```'
+  agent: summerizer
