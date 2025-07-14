@@ -1,0 +1,11 @@
+memecoin_question_task:
+  description: >
+    The user's question is:
+    {question}
+
+    Identify which meme coin and which type of information the user is asking for.
+    Then, use the available tools to retrieve the necessary data and respond in a clear and helpful way.
+  expected_output: >
+    - A summarized natural language answer
+    - Include numeric data such as price, volume, liquidity, number of holders, Twitter mentions, or lock status, if applicable
+  agent: memecoin_qa_agent

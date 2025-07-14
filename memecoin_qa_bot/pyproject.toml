@@ -1,0 +1,21 @@
+[project]
+name = "memecoin_qa_bot"
+version = "0.1.0"
+description = "memecoin-qa-bot using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.83.0,<1.0.0",
+    "gql[requests]>=3.5.0"
+]
+
+[project.scripts]
+memecoin_qa_bot = "memecoin_qa_bot.main:run"
+run_crew = "memecoin_qa_bot.main:run"
+train = "memecoin_qa_bot.main:train"
+replay = "memecoin_qa_bot.main:replay"
+test = "memecoin_qa_bot.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
