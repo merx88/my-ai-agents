@@ -28,7 +28,7 @@ class GmailTool(BaseTool):
 
             sender = os.getenv("GMAIL_SENDER")
             to = os.getenv("GMAIL_RECIPIENT")
-            subject = "Meeting Minutes"
+            subject = "Memecoin Report"
             message_text = body
 
             message = create_message(sender, to, subject, message_text)

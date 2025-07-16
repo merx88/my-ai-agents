@@ -1,17 +1,57 @@
-research_task:
+fetch_meme_data_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
-  expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    Collect on-chain and market data for {tokens} through various APIs (Dexscreener, BscScan, etc.).
+    Highlights include
 
-reporting_task:
-  description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    - Current price
+    - Market capitalization
+    - 24-hour trading volume
+    - Number of holders
+    - Circulating Supply
+    - Number of on-chain transactions in 24 hours
+    - Average Gas Price
+    - Top 10 holder share
+    - TVL of major LPs
+    - Listed exchanges and volume distribution
+
+    Save the collected data in JSON format to the file `data/meme_data.json`. 
+    If not, leave blank...
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    Structured JSON data stored in the file data/meme_data.json
+  agent: meme_info_fetcher
+
+write_meme_report_task:
+  description: >
+    Based on the saved meme_data.json, create a report following the format below and save it in the file `output/meme_report.txt` (If not, leave blank):
+
+    MemeCoins daily Report: [meme coin name] - [date].
+    1. Summary
+    Overall health: [e.g., healthy / needs attention, etc.].
+    Highlights: [e.g., influx of new holders, increase in liquidity pool, etc.]
+
+    2. key metrics
+    Current Price: $...
+    Market Capitalization: $...
+    24-Hour Trading Volume: $...
+    Number of holders: ...people
+    Circulating Supply: ...pcs
+
+    3. on-chain and liquidity
+    Number of transactions in 24 hours: ...transactions
+    Average gas price: ... Gwei
+    Top 10 holders share: ...%.
+    Main LP (ETH/MEME) TVL: $...
+
+    4. Exchange Listings
+    Main Listed Exchanges: ...
+    Volume Distribution: DEX ...% / CEX ...%
+
+    5. Key Issues and Recommendations
+    Issues Identified: ...
+    Potential Risks: ...
+    Recommendations: ...
+
+    Date of report generation: YYYYY MM Month DD Day HH:MM KST
+  expected_output: >
+    {tokens} report organized in output/meme_report.txt
+  agent: meme_report_writer

@@ -1,0 +1,177 @@
+{
+  "Torch of Liberty": [
+    {
+      "name": "Torch of Liberty",
+      "symbol": "Liberty",
+      "price_usd": "0.07492",
+      "market_cap": 74929047,
+      "volume_24h": 10352056.35,
+      "liquidity_usd": 1514270,
+      "price_change_24h": -10.72,
+      "website": "https://torchofliberty.global/",
+      "twitter": "https://x.com/liberty_bsc",
+      "telegram": "https://t.me/liberty_bsc",
+      "dex_url": "https://dexscreener.com/bsc/0x751817452f48fb01980f7931290a7f4514764353"
+    },
+    {
+      "name": "Torch of Liberty",
+      "symbol": "Liberty",
+      "price_usd": "0.07521",
+      "market_cap": 75210385,
+      "volume_24h": 1117.49,
+      "liquidity_usd": 473,
+      "price_change_24h": -10.34,
+      "website": "https://torchofliberty.global/",
+      "twitter": "https://x.com/liberty_bsc",
+      "telegram": "https://t.me/liberty_bsc",
+      "dex_url": "https://dexscreener.com/bsc/0xa0320959d0f4156aab3d533875ff55279b87e605"
+    }
+  ],
+  "EGL1": [
+    {
+      "name": "EGL1",
+      "symbol": "EGL1",
+      "price_usd": "0.08605",
+      "market_cap": 83945217,
+      "volume_24h": 137855160.77,
+      "liquidity_usd": 2071858.78,
+      "price_change_24h": -2.86,
+      "website": "https://eagles.land",
+      "twitter": "https://x.com/EGLL_american",
+      "telegram": "https://t.me/EGL1Nest",
+      "dex_url": "https://dexscreener.com/bsc/0x6d76e7bb743fee795a2f00a317760acf822ee2be"
+    },
+    {
+      "name": "EGL1",
+      "symbol": "EGL1",
+      "price_usd": "0.08602",
+      "market_cap": 83920202,
+      "volume_24h": 69613.72,
+      "liquidity_usd": 40706.81,
+      "price_change_24h": -1.98,
+      "website": "https://eagles.land",
+      "twitter": "https://x.com/EGLL_american",
+      "telegram": "https://t.me/EGL1Nest",
+      "dex_url": "https://dexscreener.com/bsc/0x07fed7f326ab26377d5a4bf4af2d0e9402ec2639"
+    },
+    {
+      "name": "EGL1",
+      "symbol": "EGL1",
+      "price_usd": "0.08536",
+      "market_cap": 83280431,
+      "volume_24h": 20976.42,
+      "liquidity_usd": 81783.48,
+      "price_change_24h": -2.41,
+      "website": "https://eagles.land",
+      "twitter": "https://x.com/EGLL_american",
+      "telegram": "https://t.me/EGL1Nest",
+      "dex_url": "https://dexscreener.com/bsc/0x400b4c3295d52bef0757181f84224ed8b7b4f6ea"
+    },
+    {
+      "name": "EGL1",
+      "symbol": "EGL1",
+      "price_usd": "0.08433",
+      "market_cap": 82269693,
+      "volume_24h": 900.02,
+      "liquidity_usd": 10852.95,
+      "price_change_24h": -5.96,
+      "website": "https://eagles.land",
+      "twitter": "https://x.com/EGLL_american",
+      "telegram": "https://t.me/EGL1Nest",
+      "dex_url": "https://dexscreener.com/bsc/0x18e3df410cd861fb886e264c8de66f03b34cd873"
+    },
+    {
+      "name": "EGL1",
+      "symbol": "EGL1",
+      "price_usd": "0.08562",
+      "market_cap": 83533351,
+      "volume_24h": 3028.78,
+      "liquidity_usd": 700.3,
+      "price_change_24h": -2.56,
+      "website": "https://eagles.land",
+      "twitter": "https://x.com/EGLL_american",
+      "telegram": "https://t.me/EGL1Nest",
+      "dex_url": "https://dexscreener.com/bsc/0xdf3b105cfbb37417b3a0bfd70cab1516dca50a1d"
+    },
+    {
+      "name": "EGL1",
+      "symbol": "EGL1",
+      "price_usd": "0.08596",
+      "market_cap": 83860489,
+      "volume_24h": 29.8,
+      "liquidity_usd": 0.05,
+      "price_change_24h": -2.12,
+      "website": "https://eagles.land",
+      "twitter": "https://x.com/EGLL_american",
+      "telegram": "https://t.me/EGL1Nest",
+      "dex_url": "https://dexscreener.com/bsc/0xd950a522e376adbe485c47eab244b9e13ca71f48"
+    },
+    {
+      "name": "Emotional Support Pickle",
+      "symbol": "ESP",
+      "price_usd": "0.00004796",
+      "market_cap": 43648,
+      "volume_24h": 41.13,
+      "liquidity_usd": 1572.19,
+      "price_change_24h": -3.08,
+      "website": "https://emotionalsupportspickle.com/",
+      "twitter": "https://x.com/EmtlspprtPickle",
+      "telegram": "https://t.me/ESPtoken",
+      "dex_url": "https://dexscreener.com/bsc/0xff4ac1287aa242f4d47b3fe586dbf2ee3396b413"
+    },
+    {
+      "name": "Flagship Bot Ai",
+      "symbol": "Flagship Bot Ai",
+      "price_usd": "0.0002024",
+      "market_cap": 2024,
+      "volume_24h": 1.82,
+      "liquidity_usd": 37.23,
+      "price_change_24h": -2.23,
+      "website": null,
+      "twitter": null,
+      "telegram": null,
+      "dex_url": "https://dexscreener.com/bsc/0x3e125cebda378638d8ba2a52a50f3f9414497840"
+    }
+  ],
+  "Janitor": [
+    {
+      "name": "Janitor",
+      "symbol": "Janitor",
+      "price_usd": "0.005285",
+      "market_cap": 4756915,
+      "volume_24h": 5118252.22,
+      "liquidity_usd": 306127.45,
+      "price_change_24h": -5.9,
+      "website": "https://janitorai.io/",
+      "twitter": "https://x.com/JanitorBNB",
+      "telegram": "https://t.me/JanitorPortal",
+      "dex_url": "https://dexscreener.com/bsc/0xbaf9f711a39271701b837c5cc4f470d533bacf33"
+    },
+    {
+      "name": "Janitor",
+      "symbol": "Janitor",
+      "price_usd": "0.005301",
+      "market_cap": 4770940,
+      "volume_24h": 25.81,
+      "liquidity_usd": 171.77,
+      "price_change_24h": 2.34,
+      "website": "https://janitorai.io/",
+      "twitter": "https://x.com/JanitorBNB",
+      "telegram": "https://t.me/JanitorPortal",
+      "dex_url": "https://dexscreener.com/bsc/0x7123a2f22c85565025e86656e1fc7ffe5e84288b"
+    },
+    {
+      "name": "Janitor",
+      "symbol": "Janitor",
+      "price_usd": "0.005298",
+      "market_cap": 4768884,
+      "volume_24h": 0.42,
+      "liquidity_usd": 0.93,
+      "price_change_24h": -0.87,
+      "website": "https://janitorai.io/",
+      "twitter": "https://x.com/JanitorBNB",
+      "telegram": "https://t.me/JanitorPortal",
+      "dex_url": "https://dexscreener.com/bsc/0x5e016adff518ea2e5dbb8adf369daf5b1afa2a48"
+    }
+  ]
+}

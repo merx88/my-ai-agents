@@ -1,64 +1,56 @@
 from crewai import Agent, Crew, Process, Task
-from crewai.project import CrewBase, agent, crew, task
-from crewai.agents.agent_builder.base_agent import BaseAgent
-from typing import List
-# If you want to run a snippet of code before or after the crew starts,
-# you can use the @before_kickoff and @after_kickoff decorators
-# https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
+from crewai.project import CrewBase, agent, task, crew
+from crewai_tools import FileWriterTool
+
+from my_memecoin_summarizer_crew.crews.summary_crew.tools.dexscreener_tool import (
+    DexscreenerTool,
+)
+
+# Tools
+file_writer_data = FileWriterTool(file_name="meme_data.json", directory="data")
+file_writer_report = FileWriterTool(file_name="meme_report.txt", directory="output")
+
 
 @CrewBase
-class SummaryCrew():
-    """SummaryCrew crew"""
+class SummaryCrew:
+    """Memecoin Summary Crew to 1. collect data and 2. generate summary reports"""
 
-    agents: List[BaseAgent]
-    tasks: List[Task]
+    agents_config = "config/agents.yaml"
+    tasks_config = "config/tasks.yaml"
 
-    # Learn more about YAML configuration files here:
-    # Agents: https://docs.crewai.com/concepts/agents#yaml-configuration-recommended
-    # Tasks: https://docs.crewai.com/concepts/tasks#yaml-configuration-recommended
-    
-    # If you would like to add tools to your agents, you can learn more about it here:
-    # https://docs.crewai.com/concepts/agents#agent-tools
     @agent
-    def researcher(self) -> Agent:
+    def meme_info_fetcher(self) -> Agent:
         return Agent(
-            config=self.agents_config['researcher'], # type: ignore[index]
-            verbose=True
+            config=self.agents_config["meme_info_fetcher"],
+            tools=[DexscreenerTool(), file_writer_data],
+            verbose=True,
         )
 
     @agent
-    def reporting_analyst(self) -> Agent:
+    def meme_report_writer(self) -> Agent:
         return Agent(
-            config=self.agents_config['reporting_analyst'], # type: ignore[index]
-            verbose=True
-        )
-
-    # To learn more about structured task outputs,
-    # task dependencies, and task callbacks, check out the documentation:
-    # https://docs.crewai.com/concepts/tasks#overview-of-a-task
-    @task
-    def research_task(self) -> Task:
-        return Task(
-            config=self.tasks_config['research_task'], # type: ignore[index]
+            config=self.agents_config["meme_report_writer"],
+            tools=[file_writer_report],
+            verbose=True,
         )
 
     @task
-    def reporting_task(self) -> Task:
+    def fetch_meme_data_task(self) -> Task:
         return Task(
-            config=self.tasks_config['reporting_task'], # type: ignore[index]
-            output_file='report.md'
+            config=self.tasks_config["fetch_meme_data_task"],
+        )
+
+    @task
+    def write_meme_report_task(self) -> Task:
+        return Task(
+            config=self.tasks_config["write_meme_report_task"],
         )
 
     @crew
     def crew(self) -> Crew:
-        """Creates the SummaryCrew crew"""
-        # To learn how to add knowledge sources to your crew, check out the documentation:
-        # https://docs.crewai.com/concepts/knowledge#what-is-knowledge
-
         return Crew(
-            agents=self.agents, # Automatically created by the @agent decorator
-            tasks=self.tasks, # Automatically created by the @task decorator
+            agents=self.agents,
+            tasks=self.tasks,
             process=Process.sequential,
             verbose=True,
-            # process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
         )

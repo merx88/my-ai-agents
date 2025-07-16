@@ -1,0 +1,67 @@
+MemeCoins daily Report: Torch of Liberty - 2024 November 05.
+1. Summary
+Overall health: Healthy. Highlights: Significant trading volume, notable market cap.
+2. Key metrics
+Current Price: $0.07492
+Market Capitalization: $74929047
+24-Hour Trading Volume: $10352056.35
+Number of holders: 
+Circulating Supply: pcs
+3. On-chain and liquidity
+Number of transactions in 24 hours: transactions
+Average gas price: Gwei
+Top 10 holders share: %
+Main LP (ETH/MEME) TVL: $1514270
+4. Exchange Listings
+Main Listed Exchanges: DEX
+Volume Distribution: DEX % / CEX %
+5. Key Issues and Recommendations
+Issues Identified: Price decrease in the last 24 hours.
+Potential Risks: Market volatility.
+Recommendations: Monitor price trends and community sentiment.
+
+MemeCoins daily Report: EGL1 - 2024 November 05.
+1. Summary
+Overall health: Healthy. Highlights: High market cap and trading volume.
+2. Key metrics
+Current Price: $0.08605
+Market Capitalization: $83945217
+24-Hour Trading Volume: $137855160.77
+Number of holders: 
+Circulating Supply: pcs
+3. On-chain and liquidity
+Number of transactions in 24 hours: transactions
+Average gas price: Gwei
+Top 10 holders share: %
+Main LP (ETH/MEME) TVL: $2071858.78
+4. Exchange Listings
+Main Listed Exchanges: DEX
+Volume Distribution: DEX % / CEX %
+5. Key Issues and Recommendations
+Issues Identified: Price decrease in the last 24 hours.
+Potential Risks: Market volatility.
+Recommendations: Maintain liquidity and monitor market trends.
+
+MemeCoins daily Report: Janitor - 2024 November 05.
+1. Summary
+Overall health: Healthy. Highlights: High trading volume.
+2. Key metrics
+Current Price: $0.005285
+Market Capitalization: $4756915
+24-Hour Trading Volume: $5118252.22
+Number of holders: 
+Circulating Supply: pcs
+3. On-chain and liquidity
+Number of transactions in 24 hours: transactions
+Average gas price: Gwei
+Top 10 holders share: %
+Main LP (ETH/MEME) TVL: $306127.45
+4. Exchange Listings
+Main Listed Exchanges: DEX
+Volume Distribution: DEX % / CEX %
+5. Key Issues and Recommendations
+Issues Identified: Price decrease in the last 24 hours.
+Potential Risks: Market volatility.
+Recommendations: Monitor price action and maintain community engagement.
+
+Date of report generation: 2024 11 November 05 14:35 KST

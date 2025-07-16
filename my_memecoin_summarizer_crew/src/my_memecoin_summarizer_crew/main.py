@@ -1,13 +1,24 @@
 from pydantic import BaseModel
 from crewai.flow.flow import Flow, listen, start
 
-# from crews.memecoin_summary_crew.memecoin_summary_crew import MemecoinSummaryCrew
+from my_memecoin_summarizer_crew.crews.summary_crew.summary_crew import SummaryCrew
 from my_memecoin_summarizer_crew.crews.gmail_crew.gmail_crew import GmailCrew
 
-# memecoins = {
-#     "DOGE": "Dogecoin is a cryptocurrency featuring a likeness of the Shiba Inu dog.",
-#     "PEPE": "Pepe is a meme coin inspired by the Pepe the Frog meme.",
-# }
+memecoins = {
+    "Torch of Liberty": {
+        "symbol": "Liberty",
+        "address": "0x6ea8211a1e47dbd8b55c487c0b906ebc57b94444",
+    },
+    "EGL1": {
+        "symbol": "EGL1",
+        "address": "0xf4b385849f2e817e92bffbfb9aeb48f950ff4444",
+    },
+    "Janitor": {
+        "symbol": "Janitor",
+        "description": "Janitor Memecoin",
+        "address": "0x3c8d20001fe883934a15c949a3355a65ca984444",
+    },
+}
 
 
 class MyMemecoinSummarizerState(BaseModel):
@@ -18,19 +29,16 @@ class MyMemecoinSummarizerFlow(Flow[MyMemecoinSummarizerState]):
 
     @start()
     def generate_summaries(self):
-        print("밈코인 요약 생성 중...")
-        # crew = MemecoinSummaryCrew()
-        # summaries = []
-        # for name, desc in memecoins.items():
-        #     # 각 밈코인별 요약 생성
-        #     summary = crew.crew().kickoff({"name": name, "description": desc})
-        #     summaries.append(f"{name}: {summary}")
-        self.state.summary = "is testing2..."
+        print("🏁 Start!")
+        print("🏃 Generating memecoin summary...")
+        crew = SummaryCrew()
+
+        self.state.summary = str(crew.crew().kickoff(inputs={"tokens": memecoins}))
         print(f"Summary: {self.state.summary}")
 
     @listen(generate_summaries)
     def send_summary_email(self):
-        print("지메일로 밈코인 요약 전송 중...")
+        print("📧 Saving summary on Gmail draft...")
         crew = GmailCrew()
         inputs = {"body": self.state.summary}
         crew.crew().kickoff(inputs)
