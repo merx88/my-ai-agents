@@ -1,0 +1,23 @@
+[project]
+name = "trending_scraper"
+version = "0.1.0"
+description = "trending-scraper using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.118.0,<1.0.0"
+]
+
+[project.scripts]
+trending_scraper = "trending_scraper.main:run"
+run_crew = "trending_scraper.main:run"
+train = "trending_scraper.main:train"
+replay = "trending_scraper.main:replay"
+test = "trending_scraper.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

@@ -1,0 +1,8 @@
+trending_keyword_scrapping_task:
+  description: >
+    Visit the page using the provided URL {url} and extract a list of current realtime search terms (trending keywords).
+    Each keyword should be returned with a ranking, excluding ads or non-relevant keywords.
+    The live search terms area is inside the UI with the class "w7i-4P4a". Extract keywords only from the area of that class.
+  expected_output: >
+    All Scrapped site contents not only keyword in output/scrapped_site.txt and A list of keywords with realtime search term rankings (e.g., #1: "OOO", #2: "XXX", ...)
+  agent: scrapper
