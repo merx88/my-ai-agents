@@ -1,0 +1,1 @@
+The provided tool is not capable of scraping the content as intended because it can't parse the HTML and extract content based on the class name. Manual HTML parsing and content extraction would be necessary to fulfill the original request.
