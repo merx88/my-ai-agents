@@ -1,1 +1,68 @@
-The provided tool is not capable of scraping the content as intended because it can't parse the HTML and extract content based on the class name. Manual HTML parsing and content extraction would be necessary to fulfill the original request.
+### Signal Trends
+1. 집중호우 피해 복구
+2. 이유 있는 건축
+3. 민생회복 소비쿠폰 신청
+4. 트럼프 엡스타인 스캔들
+5. 김건우 강우진 논란
+6. 데이식스
+7. 덱스 아이쇼핑 액션
+8. 대한체육회 대한킥복싱협회
+9. 대서
+10. 김건희 박사학위 무효
+
+### NamuWiki Trends
+1. 집중호우 피해 복구
+2. 이유 있는 건축
+3. 민생회복 소비쿠폰 신청
+4. 트럼프 엡스타인 스캔들
+5. 김건우 강우진 논란
+6. 데이식스
+7. 덱스 아이쇼핑 액션
+8. 대한체육회 대한킥복싱협회
+9. 대서
+10. 김건희 박사학위 무효
+
+### X Trends
+1. 동원참치
+2. 고스트걸
+3. #게임_10작품으로_취향을_드러내자
+4. 별의 노래
+5. 최애 장소
+6. #MeetFiamma
+7. 프플팩 사용
+8. 스파이어
+9. 최애 NPC
+10. 슈퍼참치
+11. #FanTheOne
+12. Sui Chain
+13. 밀레설정
+14. 투바투 쇼케이스
+15. 사냥사랑
+
+### Google Trends
+1. 민생지원금
+2. 송도 총기난사
+3. 리와인드
+4. 농협카드
+5. 국민카드
+6. 지원금
+7. 정영애
+8. 농협
+9. 키움 박수종
+10. 에어로케이
+11. 참정당
+12. 버거킹
+13. 김건희
+14. 진에어
+15. 세종시장
+16. 에어프레미아
+17. 김건우
+18. 우리카드
+19. 하나카드
+20. 티머니
+21. 현대카드
+22. 삼성카드
+23. 단통법
+24. 롯데시네마
+25. west indies vs australia
+26. 리버스100

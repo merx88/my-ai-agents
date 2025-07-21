@@ -1,24 +1,20 @@
 from crewai import Agent, Crew, Process, Task
-from crewai.project import CrewBase, agent, crew, task, before_kickoff, after_kickoff
-from crewai_tools import ScrapeWebsiteTool, FileWriterTool
+from crewai.project import CrewBase, agent, crew, task, after_kickoff
+from crewai_tools import FileWriterTool, SeleniumScrapingTool
 
-# from crewai_tools import FirecrawlCrawlWebsiteTool
+signal_scraping_tool = SeleniumScrapingTool(website_url='https://signal.bz/',css_element='.container',wait_time=5)
+namuwiki_scraping_tool = SeleniumScrapingTool(website_url='https://arca.live/b/namuhotnow',css_element='.list-table table',wait_time=5)
+x_scraping_tool = SeleniumScrapingTool(website_url='https://getdaytrends.com/ko/korea/',css_element='#trends',wait_time=5)
+google_scraping_tool = SeleniumScrapingTool(website_url='https://trends.google.com/trending?geo=KR&hours=24',css_element='.enOdEe-wZVHld-zg7Cn',wait_time=5)
 
-from crewai_tools import SeleniumScrapingTool
+signal_writer_tool = FileWriterTool(file_name="signal.md", directory="output")
+namuwiki_writer_tool = FileWriterTool(file_name="namuwiki.md", directory="output")
+x_writer_tool = FileWriterTool(file_name="x.md", directory="output")
+google_writer_tool = FileWriterTool(file_name="google.md", directory="output")
 
-
-selenium_scraping_tool = SeleniumScrapingTool(website_url='https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8', css_element='.S8ooZIk2 OUzdD2Mn', wait_time=5 )
-
-
-# Uncomment the following line to use an example of a custom tool
-# from summarizer_bot.tools.custom_tool import MyCustomTool
-
-# Check our tools documentations for more information on how to use them
-# from crewai_tools import SerperDevTool
-file_writer_scraped_site = FileWriterTool(
-    file_name="scraped_site.md", directory="output"
-)
-
+file_writer_tool = FileWriterTool(file_name="scrapped_site.md", directory="output")
+report_writer_tool = FileWriterTool(file_name="report.md", directory="output")
+notion_upload_tool = FileWriterTool(file_name="notion_upload.log", directory="output") 
 
 @CrewBase
 class TrendingScraper:
@@ -27,52 +23,103 @@ class TrendingScraper:
     agents_config = "config/agents.yaml"
     tasks_config = "config/tasks.yaml"
 
-    # @before_kickoff  # Optional hook to be executed before the crew starts
-    # def get_url(self, inputs):
-    #     if not inputs.get("url"):
-    #         url = "https://arca.live/b/namuhotnow"
-    #         inputs["url"] = url.strip()
-    #     return inputs
-
-    @after_kickoff  # Optional hook to be executed after the crew has finished
+    @after_kickoff
     def print_results(self, output):
-        # Example of logging results, dynamically changing the output
         print(f"Result: \n{output}")
         return output
 
+    # === Agents ===
     @agent
-    def site_scraper(self) -> Agent:
+    def signal_trending_scraper(self) -> Agent:
         return Agent(
-            config=self.agents_config["site_scraper"],
-            tools=[selenium_scraping_tool, file_writer_scraped_site],
+            config=self.agents_config["signal_trending_scraper"],
+            tools=[signal_scraping_tool, signal_writer_tool],
             verbose=True,
         )
 
     @agent
-    def realtime_trending_keyword_extractor(self) -> Agent:
+    def namuwiki_trending_scraper(self) -> Agent:
         return Agent(
-            config=self.agents_config["realtime_trending_keyword_extractor"],
-            # tools=[ScrapeWebsiteTool(), file_writer_scrapped_site],
+            config=self.agents_config["namuwiki_trending_scraper"],
+            tools=[namuwiki_scraping_tool, namuwiki_writer_tool],
             verbose=True,
         )
 
-    @task
-    def site_scrapping_task(self) -> Task:
-        return Task(config=self.tasks_config["site_scraping_task"])
-
-    @task
-    def realtime_trending_keyword_extraction_task(self) -> Task:
-        return Task(
-            config=self.tasks_config["realtime_trending_keyword_extraction_task"]
+    @agent
+    def x_trending_crawler(self) -> Agent:
+        return Agent(
+            config=self.agents_config["x_trending_crawler"],
+            tools=[x_scraping_tool, x_writer_tool],
+            verbose=True,
         )
 
+    @agent
+    def google_trending_scraper(self) -> Agent:
+        return Agent(
+            config=self.agents_config["google_trending_scraper"],
+            tools=[google_scraping_tool, google_writer_tool],
+            verbose=True,
+        )
+
+    @agent
+    def trending_organizer(self) -> Agent:
+        return Agent(
+            config=self.agents_config["trending_organizer"],
+            tools=[file_writer_tool],
+            verbose=True,
+        )
+
+    @agent
+    def cross_validation_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config["cross_validation_agent"],
+            tools=[report_writer_tool],
+            verbose=True,
+        )
+
+    # @agent
+    # def notion_uploader(self) -> Agent:
+    #     return Agent(
+    #         config=self.agents_config["notion_uploader"],
+    #         tools=[notion_upload_tool],
+    #         verbose=True,
+    #     )
+
+    # === Tasks ===
+    @task
+    def collect_signal_trending(self) -> Task:
+        return Task(config=self.tasks_config["collect_signal_trending"])
+
+    @task
+    def collect_namuwiki_trending(self) -> Task:
+        return Task(config=self.tasks_config["collect_namuwiki_trending"])
+
+    @task
+    def collect_x_trending(self) -> Task:
+        return Task(config=self.tasks_config["collect_x_trending"])
+
+    @task
+    def collect_google_trending(self) -> Task:
+        return Task(config=self.tasks_config["collect_google_trending"])
+
+    @task
+    def organize_trending(self) -> Task:
+        return Task(config=self.tasks_config["organize_trending"])
+
+    @task
+    def cross_validate_trending(self) -> Task:
+        return Task(config=self.tasks_config["cross_validate_trending"])
+
+    # @task
+    # def upload_to_notion(self) -> Task:
+    #     return Task(config=self.tasks_config["upload_to_notion"])
+
+    # === Crew ===
     @crew
     def crew(self) -> Crew:
-        """Creates the SummarizerBot crew"""
         return Crew(
-            agents=self.agents,  # Automatically created by the @agent decorator
-            tasks=self.tasks,  # Automatically created by the @task decorator
+            agents=self.agents,  # All agents defined above
+            tasks=self.tasks,    # All tasks defined above
             process=Process.sequential,
             verbose=True,
-            # process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
         )
