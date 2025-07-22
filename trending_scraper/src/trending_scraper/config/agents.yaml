@@ -48,13 +48,15 @@ trending_organizer:
 
 # ===== 트렌드 교차 검증 및 최종 선정 ===== #
 
+# ❌
 cross_validation_agent:
   role: >
     Trend Cross-Validation and Final Selection Expert
   goal: >
-    To compare and analyze keywords collected from various services, integrate duplicate/similar keywords, and extract only the truly hot keywords, and organize the results into a markdown file.
+    To compare and analyze keywords collected from various services, integrate duplicate/similar keywords, and extract only the truly hot keywords, and output them as a list of tuples: [(rank, keyword, reason), ...].
   backstory: >
     Specialized in data analysis, duplicate removal, and ranking selection.
+
 
 # ===== 노션 업로드 ===== #
 

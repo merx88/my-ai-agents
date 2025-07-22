@@ -1,6 +1,17 @@
+import sys, os
+from notion_trends_uploader import NotionTrendUploader
+from dotenv import load_dotenv
+import time
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+sys.path.append(BASE_DIR)
+
+from final import result
+
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task, after_kickoff
 from crewai_tools import FileWriterTool, SeleniumScrapingTool
+
 
 signal_scraping_tool = SeleniumScrapingTool(website_url='https://signal.bz/',css_element='.container',wait_time=5)
 namuwiki_scraping_tool = SeleniumScrapingTool(website_url='https://arca.live/b/namuhotnow',css_element='.list-table table',wait_time=5)
@@ -13,8 +24,14 @@ x_writer_tool = FileWriterTool(file_name="x.md", directory="output")
 google_writer_tool = FileWriterTool(file_name="google.md", directory="output")
 
 file_writer_tool = FileWriterTool(file_name="scrapped_site.md", directory="output")
-report_writer_tool = FileWriterTool(file_name="report.md", directory="output")
+final_writer_tool = FileWriterTool(file_name="final.py", directory="output")
 notion_upload_tool = FileWriterTool(file_name="notion_upload.log", directory="output") 
+
+load_dotenv() 
+
+NOTION_API_KEY = os.getenv("NOTION_API_KEY")
+DATABASE_ID = os.getenv("DATABASE_ID")
+
 
 @CrewBase
 class TrendingScraper:
@@ -24,9 +41,13 @@ class TrendingScraper:
     tasks_config = "config/tasks.yaml"
 
     @after_kickoff
-    def print_results(self, output):
-        print(f"Result: \n{output}")
-        return output
+    def save_results_on_notion(self, output):
+        print("FUCK!!!",output)
+        time.sleep(3) 
+        
+        uploader = NotionTrendUploader(NOTION_API_KEY, DATABASE_ID)
+        uploader.upload_trends(result)
+        
 
     # === Agents ===
     @agent
@@ -73,7 +94,7 @@ class TrendingScraper:
     def cross_validation_agent(self) -> Agent:
         return Agent(
             config=self.agents_config["cross_validation_agent"],
-            tools=[report_writer_tool],
+            tools=[final_writer_tool],
             verbose=True,
         )
 

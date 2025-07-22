@@ -5,8 +5,11 @@ description = "trending-scraper using crewAI"
 authors = [{ name = "Your Name", email = "you@example.com" }]
 requires-python = ">=3.10,<3.13"
 dependencies = [
+    "crewai-tools>=0.55.0",
     "crewai[tools]>=0.118.0,<1.0.0",
     "firecrawl-py>=2.16.1",
+    "notion-database",
+    "notion-client",
 ]
 
 [project.scripts]

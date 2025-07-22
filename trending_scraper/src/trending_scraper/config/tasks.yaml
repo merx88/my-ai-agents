@@ -51,24 +51,29 @@ organize_trending:
 
 cross_validate_trending:
   description: >
-    Analyze the organized trend keyword file (output/scrapped_site.md) and select the Top 10 keywords that are considered 'real' trends, such as those mentioned across multiple services. For each keyword, also summarize the reason for selection (e.g., mentioned on 3 sites) and write a report.
+    Analyze the organized trend keyword data (from multiple services such as Signal, NamuWiki, X, and Google).
+    Identify the Top 10 keywords that are considered 'real' trends — those mentioned across multiple services.
+    For each keyword, summarize the reason for its selection (e.g., mentioned on 3 sites).
+    Save the final result to `final.py` in the following format:
+
+    result = [
+      (1, "Keyword", "Reason for selection"),
+      (2, "Another Keyword", "Another reason"),
+      ...
+    ]
+
   expected_output: >
-    A markdown report file (report.md) detailing the final Top 10 trend keywords and the reasons for their selection.
-    The top of the report must include the phrase: "### Final Top 10 Trend Keywords and Reasons for Selection"
-  example:
-    ### Final Top 10 Trend Keywords and Reasons for Selection
+    A Python list of 10 tuples in the format: [(rank, keyword, reason), ...].
 
-    1. **[Keyword 1]**
-       - **Reason for selection** Mentioned on Signal, NamuWiki, and X.
+    Each tuple should contain:
+      - rank: integer (1 to 10)
+      - keyword: string
+      - reason: string (e.g., "Mentioned on Signal, NamuWiki, and X")
 
-    2. **[Keyword 2]**
-       - **Reason for selection** Ranked high on Google and X.
-
-    ...
-
-    10. **[Keyword 10]**
-        - **Reason for selection** Ranked 
+    The final result must be saved to `final.py` as a variable assignment:
+    result = [ ... ]
   agent: cross_validation_agent
+
 
 # ===== Notion Upload ===== #
 
