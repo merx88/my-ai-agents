@@ -1,0 +1,26 @@
+{
+  "Torch of Liberty": {
+    "symbol": "Liberty",
+    "address": "0x6ea8211a1e47dbd8b55c487c0b906ebc57b94444",
+    "price_usd": "0.1056",
+    "market_cap": 105618872,
+    "volume_24h": 10333620.74,
+    "liquidity_usd": 1801346.64
+  },
+  "EGL1": {
+    "symbol": "EGL1",
+    "address": "0xf4b385849f2e817e92bffbfb9aeb48f950ff4444",
+    "price_usd": "0.1102",
+    "market_cap": 106855449,
+    "volume_24h": 131585474.06,
+    "liquidity_usd": 2163845.85
+  },
+  "Janitor": {
+    "symbol": "Janitor",
+    "address": "0x3c8d20001fe883934a15c949a3355a65ca984444",
+    "price_usd": "0.004171",
+    "market_cap": 3754778,
+    "volume_24h": 585872.94,
+    "liquidity_usd": 247247.94
+  }
+}

@@ -1,0 +1,99 @@
+collect_token_data:
+  description: >
+    Collect on-chain and market data for {tokens} through various APIs (Dexscreener, monadscan, etc.).
+    Highlights include
+
+    - Current price
+    - Market capitalization 
+    - 24-hour trading volume
+    - Number of holders
+    - Circulating Supply
+    - Number of on-chain transactions in 24 hours
+    - Average Gas Price
+    - Top 10 holder share
+    - TVL of major LPs
+    - Listed exchanges and volume distribution
+
+    Save the collected data in JSON format to the file `datas/token_data.json`. 
+    If not, leave blank...
+  expected_output: >
+    Structured JSON data stored in the file datas/token_data.json
+  agent: token_data_collector
+
+
+write_token_report:
+  description: >
+    Load token data from the JSON file `datas/token_data.json`, which includes essential market and social metrics for multiple tokens. 
+    For each token, generate a well-structured, human-readable markdown report summarizing the token’s key statistics and relevant links.
+
+    Each token section in the report must include:
+
+    ### Token Overview
+    - Name and Symbol
+    - Description (if provided)
+    - Contract Address (formatted in monospace)
+    - Official Links: Website, Twitter, Telegram
+    - Dexscreener Link
+
+    ### Market Data
+    - Current Price in USD
+    - Market Capitalization (formatted with commas)
+    - 24-Hour Trading Volume (USD)
+    - Liquidity (USD)
+    - Price Change in 24h (with + or - and % symbol)
+
+    ### Analysis Summary
+    - Short 1-2 sentence insight based on price movement and volume (e.g., "Significant volume spike", "Large dip in 24h", etc.)
+
+    ### Format Requirements:
+    - Use markdown (e.g., `##`, `**`, `-`) with appropriate section headings
+    - Format all numerical values with commas and appropriate currency symbols
+    - Show positive/negative price change with emoji (📈 / 📉)
+    - Ensure each token section is separated clearly
+
+    Save the final result to `reports/token_report.md`.
+
+  input:
+    - datas/token_data.json
+  
+  expected_output: >
+    A markdown report saved at reports/token_report.md, formatted cleanly and including human-readable metrics, links, and token-level analysis.
+
+  agent: token_report_writer
+
+
+# write_meme_report_task:
+#   description: >
+#     Based on the saved meme_data.json, create a report following the format below and save it in the file `output/meme_report.txt` (If not, leave blank):
+
+#     MemeCoins daily Report: [meme coin name] - [date].
+#     1. Summary
+#     Overall health: [e.g., healthy / needs attention, etc.].
+#     Highlights: [e.g., influx of new holders, increase in liquidity pool, etc.]
+
+#     2. key metrics
+#     Current Price: $...
+#     Market Capitalization: $...
+#     24-Hour Trading Volume: $...
+#     Number of holders: ...people
+#     Circulating Supply: ...pcs
+
+#     3. on-chain and liquidity
+#     Number of transactions in 24 hours: ...transactions
+#     Average gas price: ... Gwei
+#     Top 10 holders share: ...%.
+#     Main LP (ETH/MEME) TVL: $...
+
+#     4. Exchange Listings
+#     Main Listed Exchanges: ...
+#     Volume Distribution: DEX ...% / CEX ...%
+
+#     5. Key Issues and Recommendations
+#     Issues Identified: ...
+#     Potential Risks: ...
+#     Recommendations: ...
+
+#     Date of report generation: YYYYY MM Month DD Day HH:MM KST
+#   expected_output: >
+#     {tokens} report organized in output/meme_report.txt
+#   agent: meme_report_writer
