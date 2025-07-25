@@ -3556,6 +3556,20 @@ wheels = [
 ]
 
 [[package]]
+name = "tavily-python"
+version = "0.7.10"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx" },
+    { name = "requests" },
+    { name = "tiktoken" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/04/0e/d4aa0f4dec298298b510ee5209f5ff29352bbbba106fd7ea0221ba8840dc/tavily_python-0.7.10.tar.gz", hash = "sha256:c87b4c0549ab2e416cf4ac3da8fe3ce5db106288408b06e197d4b5ba8ec7ead9", size = 19275, upload-time = "2025-07-17T23:57:01.239Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/64/60/4c4678a28b3b5061aa2ab45b215290d3a71810e7996bafdf6b7313e75fb3/tavily_python-0.7.10-py3-none-any.whl", hash = "sha256:a99958e14dd091271611be7fb1e1a8a86f5bff3a9022b9626f4c4f1513338088", size = 15786, upload-time = "2025-07-17T23:56:58.404Z" },
+]
+
+[[package]]
 name = "tenacity"
 version = "9.1.2"
 source = { registry = "https://pypi.org/simple" }
@@ -3717,6 +3731,7 @@ dependencies = [
     { name = "firecrawl-py" },
     { name = "notion-client" },
     { name = "notion-database" },
+    { name = "tavily-python" },
 ]
 
 [package.metadata]
@@ -3726,6 +3741,7 @@ requires-dist = [
     { name = "firecrawl-py", specifier = ">=2.16.1" },
     { name = "notion-client" },
     { name = "notion-database" },
+    { name = "tavily-python", specifier = ">=0.3.1" },
 ]
 
 [[package]]

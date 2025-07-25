@@ -10,6 +10,7 @@ dependencies = [
     "firecrawl-py>=2.16.1",
     "notion-database",
     "notion-client",
+    "tavily-python>=0.3.1"
 ]
 
 [project.scripts]

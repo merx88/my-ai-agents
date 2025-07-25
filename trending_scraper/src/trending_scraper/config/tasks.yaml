@@ -1,5 +1,14 @@
 
-# ===== Collect trending keywords from each trending site ===== #
+# ===== 각 트렌드 사이트에서 트렌드 키워드를 수집 ===== #
+
+collect_namunews_trending:
+  description: >
+    Visit the Namunews website (https://namu.news/) and extract keywords currently trending in real time from its dedicated trending section. If a clearly defined section cannot be found, identify and collect keywords that are likely trending. Save the extracted results as a markdown file at output/namunews.md.
+  expected_output: >
+    A markdown file (output/namunews.md) listing the current trending keywords from Namunews, numbered in order.
+  agent: namunews_trending_scraper
+
+
 
 collect_signal_trending:
   description: >
@@ -8,12 +17,7 @@ collect_signal_trending:
     A markdown file (output/signal.md) containing only the numbered real-time trending keywords from the Signal real-time trend area.
   agent: signal_trending_scraper
 
-collect_namuwiki_trending:
-  description: >
-    Scrape the titles of each post from the NamuWiki trending channel (https://arca.live/b/namuhotnow) and save them as a markdown file (output/namuwiki.md). (The NamuWiki trending channel is a board that brings NamuWiki's trending keywords and explains the reasons.)
-  expected_output: >
-    A markdown file (output/namuwiki.md) containing only the titles of posts from the NamuWiki trending channel. The top of the markdown file should include the following phrase: "The following words are from the NamuWiki trending channel and are currently real-time trending keywords."
-  agent: namuwiki_trending_scraper
+
 
 collect_x_trending:
   description: >
@@ -29,11 +33,11 @@ collect_google_trending:
     A markdown file (output/google.md) containing only the numbered real-time trending keywords from the Google real-time trend area.
   agent: google_trending_scraper
 
-# ===== Trend Organization ===== #
+# ===== 트렌드 정리 ===== #
 
 organize_trending:
   description: >
-    Gather the trend keyword markdown files (output/signal.md, output/namuwiki.md, output/x.md, output/google.md) collected from each service (Signal, NamuWiki, X, Google) and organize them for easy viewing. Clearly separate each service by section so it is clear which site each keyword came from.
+    Gather the trend keyword markdown files (output/signal.md, output/x.md, output/google.md, output/namunews.md) collected from each service (Signal, namunews, X, Google) and organize them for easy viewing. Clearly separate each service by section so it is clear which site each keyword came from.
   expected_output: >
     A single markdown file (output/scrapped_site.md) with trend keywords organized by service.
     Example:
@@ -47,35 +51,81 @@ organize_trending:
     ...
   agent: trending_organizer
 
-# ===== Trend Cross-Validation and Final Selection ===== #
+# ===== 트렌드 교차 검증 및 최종 선정 ===== #
+
+# cross_validate_trending:
+#   description: >
+#     Analyze the organized trend keyword data (output/scrapped_site.md from multiple services such as Signal, Namunews, X, and Google).
+#     Identify the Top 3 keywords that appear most frequently across multiple services.
+#     Sort these keywords by the number of mentions in descending order.
+#     For each keyword, summarize the reason for its selection by listing which sites mentioned it (e.g., "Mentioned on Signal, Namunews, and X").
+#     Save the final result to `final.py` in the following format:
+
+#     result = [
+#       (1, "Keyword", "Reason for selection"),
+#       (2, "Another Keyword", "Another reason"),
+#       (3, "Third Keyword", "Third reason"),
+#     ]
+
+#   expected_output: >
+#     A Python list of 3 tuples sorted by mention count (most to least) in the format: [(rank, keyword, reason), ...].
+
+#     Each tuple should contain:
+#       - rank: integer (1 to 3)
+#       - keyword: string
+#       - reason: string (e.g., "Mentioned on Signal, Namunews, and X")
+
+#     The final result must be saved to `final.py` as a variable assignment:
+#     result = [ ... ]
+#   agent: cross_validation_agent
+
 
 cross_validate_trending:
   description: >
-    Analyze the organized trend keyword data (from multiple services such as Signal, NamuWiki, X, and Google).
-    Identify the Top 10 keywords that are considered 'real' trends — those mentioned across multiple services.
-    For each keyword, summarize the reason for its selection (e.g., mentioned on 3 sites).
-    Save the final result to `final.py` in the following format:
+    Analyze the organized trend keyword data (output/scrapped_site.md from multiple services such as Signal, Namunews, X, and Google).
+    Identify the Top 3 keywords that appear most frequently across multiple services.
+    Sort these keywords by the number of mentions in descending order.
+    
+    Save only the ranked keywords (without reasons) to a Markdown file `trend.md` in the following format:
 
-    result = [
-      (1, "Keyword", "Reason for selection"),
-      (2, "Another Keyword", "Another reason"),
-      ...
-    ]
+    1. Keyword
+    2. Keyword
+    3. Keyword
 
   expected_output: >
-    A Python list of 10 tuples in the format: [(rank, keyword, reason), ...].
-
-    Each tuple should contain:
-      - rank: integer (1 to 10)
-      - keyword: string
-      - reason: string (e.g., "Mentioned on Signal, NamuWiki, and X")
-
-    The final result must be saved to `final.py` as a variable assignment:
-    result = [ ... ]
+    A Markdown file named `trend.md` containing only the top 3 ranked keywords.
   agent: cross_validation_agent
 
 
-# ===== Notion Upload ===== #
+# ===== 최종선정 키워드가 핫한 이유 찾기 ===== #
+
+explain_trends:
+  description: >
+    Read the top 3 trending keywords from the Markdown file `trend.md`.
+    Perform real-time web research for each keyword and generate a unified Markdown report that explains why each keyword is currently trending.
+
+  expected_output: >
+    A single Markdown file (e.g., output/explained_trends.md) containing three separate sections — one for each keyword read from `trend.md`.
+    Each section should clearly explain the background, related news, and social context that contribute to the keyword's popularity.
+
+    Example format:
+    ## 1. Keyword: Barbenheimer  
+    **Why it's trending:**  
+    "Barbenheimer" is a viral trend referring to the simultaneous release of the movies *Barbie* and *Oppenheimer*. Their contrasting themes and fan-made memes created massive buzz across social media.  
+
+    ## 2. Keyword: Perfect CSAT Score  
+    **Why it's trending:**  
+    The announcement of a perfect scorer in the 2025 College Scholastic Ability Test (CSAT) drew attention in both media and online communities.  
+
+    ## 3. Keyword: AI Interview  
+    **Why it's trending:**  
+    AI-powered interviews are gaining popularity in corporate recruitment, leading to discussions about preparation strategies and ethical concerns.
+
+  agent: trend_explainer
+
+
+
+# ===== 노션 업로드 ===== #
 
 # upload_to_notion:
 #   description: >

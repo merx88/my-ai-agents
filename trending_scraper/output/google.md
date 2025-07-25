@@ -1,27 +1,27 @@
-# Google Real-time Trending Keywords
+# Google Real-time Trending Keywords (Korea, 24 hours)
 
-1. lg 대 kia
-2. 한화 대 두산
-3. 애플페이 티머니
-4. 롯데 대 키움
-5. ssg 대 삼성
-6. 광주 대 김천상무
-7. 어쩔수가없다
-8. 필킨
-9. bangladesh vs pakistan
-10. 과즙세연
-11. kt 대 nc
-12. 파월 연설
-13. 박기량
-14. u-23 việt nam đấu với đội tuyển bóng đá u-23 quốc gia campuchia
-15. 김요한
-16. k리그1
-17. 민생 회복 소비 쿠폰 사용법
-18. 기아타이거즈
-19. 연상호
-20. 심우준
-21. 아이쇼핑 드라마
-22. south africa vs new zealand
-23. 백경현 구리시장
-24. 기아
-25. 네오플
+1. 태국 캄보디아
+2. 헐크호건
+3. hulk hogan
+4. 권은비 빠니보틀 열애
+5. 판타스틱4 쿠키
+6. 위성락
+7. 테슬라
+8. pakistan vs bangladesh
+9. 한화
+10. 박승수
+11. 황의조
+12. 양문석
+13. 오지호
+14. 김병휘
+15. 이수지
+16. 고효준
+17. 카이스트
+18. 에어프레미아
+19. 영화 할인권
+20. 김서현
+21. tsla
+22. 김건우
+23. 토스 행운퀴즈 정답
+24. 천성훈
+25. 레이스 대 화이트삭스
