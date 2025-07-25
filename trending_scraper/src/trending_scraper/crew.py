@@ -1,12 +1,11 @@
 import sys, os
-from notion_trends_uploader import NotionTrendUploader
+from notion_uploader import NotionUploader
 from dotenv import load_dotenv
 import time
+from datetime import datetime
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 sys.path.append(BASE_DIR)
-
-from final import result
 
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task, after_kickoff
@@ -38,6 +37,8 @@ load_dotenv()
 NOTION_API_KEY = os.getenv("NOTION_API_KEY")
 DATABASE_ID = os.getenv("DATABASE_ID")
 
+now_date = datetime.now().isoformat()
+
 
 @CrewBase
 class TrendingScraper:
@@ -46,11 +47,10 @@ class TrendingScraper:
     agents_config = "config/agents.yaml"
     tasks_config = "config/tasks.yaml"
 
-    # @after_kickoff
-    # def save_results_on_notion(self, output):
-    #     time.sleep(3) 
-    #     uploader = NotionTrendUploader(NOTION_API_KEY, DATABASE_ID)
-    #     uploader.upload_trends(result)
+    @after_kickoff
+    def save_results_on_notion(self, output):
+        uploader = NotionUploader(NOTION_API_KEY, DATABASE_ID)
+        uploader.upload_report("final", now_date)
         
 
     # === Agents ===

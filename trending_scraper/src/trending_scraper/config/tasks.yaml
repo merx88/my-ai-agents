@@ -105,10 +105,12 @@ explain_trends:
     Perform real-time web research for each keyword and generate a unified Markdown report that explains why each keyword is currently trending.
 
   expected_output: >
-    A single Markdown file (e.g., output/explained_trends.md) containing three separate sections — one for each keyword read from `trend.md`.
+    A single Markdown file (e.g., output/final.md) containing three separate sections — one for each keyword read from `trend.md`.
     Each section should clearly explain the background, related news, and social context that contribute to the keyword's popularity.
 
     Example format:
+    # Now Top3 Trends
+
     ## 1. Keyword: Barbenheimer  
     **Why it's trending:**  
     "Barbenheimer" is a viral trend referring to the simultaneous release of the movies *Barbie* and *Oppenheimer*. Their contrasting themes and fan-made memes created massive buzz across social media.  
