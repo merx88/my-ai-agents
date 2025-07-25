@@ -1,31 +1,28 @@
 
 from notion_client import Client
 
-
 class NotionUploader:
     def __init__(self, api_key: str, database_id: str):
         self.notion = Client(auth=api_key)
         self.database_id = database_id
-
-    from datetime import date
 
     def upload_report(self, report, date):
         db_info = self.notion.databases.retrieve(database_id=self.database_id)
         print(db_info["properties"])
 
         properties = {
-            "토큰 보고서": { 
+            "제목": { 
                 "title": [
                     {
                         "text": {
-                            "content": '토큰 보고서'
+                            "content": f"토큰 리포트"
                         }
                     }
                 ]
             },
             "날짜": {  
                 "date": {
-                    "start": date
+                    "start":  date
                 }
             },
         }

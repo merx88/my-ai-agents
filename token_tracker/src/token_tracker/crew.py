@@ -23,7 +23,7 @@ load_dotenv()
 NOTION_API_KEY = os.getenv("NOTION_API_KEY")
 DATABASE_ID = os.getenv("DATABASE_ID")
 
-now_date = datetime.now().date().isoformat()
+now_date = datetime.now().isoformat()
 
 
 @CrewBase
