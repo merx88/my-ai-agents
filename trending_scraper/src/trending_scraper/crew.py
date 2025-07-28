@@ -14,12 +14,12 @@ from crewai_tools import FileWriterTool, SeleniumScrapingTool
 from crewai_tools.tools.tavily_search_tool.tavily_search_tool import TavilySearchTool
 
 
-signal_scraping_tool = SeleniumScrapingTool(website_url='https://signal.bz/',css_element='.container',wait_time=5)
+# signal_scraping_tool = SeleniumScrapingTool(website_url='https://signal.bz/',css_element='.container',wait_time=5)
 namunews_scraping_tool = SeleniumScrapingTool(website_url='https://namu.news/',wait_time=5)
 x_scraping_tool = SeleniumScrapingTool(website_url='https://getdaytrends.com/ko/korea/',css_element='#trends',wait_time=5)
 google_scraping_tool = SeleniumScrapingTool(website_url='https://trends.google.com/trending?geo=KR&hours=24',css_element='.enOdEe-wZVHld-zg7Cn',wait_time=5)
 
-signal_writer_tool = FileWriterTool(file_name="signal.md", directory="output", overwrite=True )
+# signal_writer_tool = FileWriterTool(file_name="signal.md", directory="output", overwrite=True )
 namunews_writer_tool = FileWriterTool(file_name="namunews.md", directory="output", overwrite=True )
 x_writer_tool = FileWriterTool(file_name="x.md", directory="output", overwrite=True )
 google_writer_tool = FileWriterTool(file_name="google.md", directory="output", overwrite=True )
@@ -72,12 +72,12 @@ class TrendingScraper:
             tools=[namunews_scraping_tool, namunews_writer_tool],
         )
 
-    @agent
-    def signal_trending_scraper(self) -> Agent:
-        return Agent(
-            config=self.agents_config["signal_trending_scraper"],
-            tools=[signal_scraping_tool, signal_writer_tool],
-        )
+    # @agent
+    # def signal_trending_scraper(self) -> Agent:
+    #     return Agent(
+    #         config=self.agents_config["signal_trending_scraper"],
+    #         tools=[signal_scraping_tool, signal_writer_tool],
+    #     )
 
     @agent
     def x_trending_crawler(self) -> Agent:
@@ -128,9 +128,9 @@ class TrendingScraper:
         return Task(config=self.tasks_config["collect_namunews_trending"])
 
 
-    @task
-    def collect_signal_trending(self) -> Task:
-        return Task(config=self.tasks_config["collect_signal_trending"])
+    # @task
+    # def collect_signal_trending(self) -> Task:
+    #     return Task(config=self.tasks_config["collect_signal_trending"])
 
 
     @task

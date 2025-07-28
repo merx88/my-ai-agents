@@ -1,54 +1,46 @@
-# TrendingScraper Crew
+# 트렌딩 스크래퍼
 
-Welcome to the TrendingScraper Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+나무뉴스, 구글 실시간 검색어, X 에서 트렌드를 찾아 이유와 함께 마크다운으로 노션에 저장해주는 에이전트입니다
 
-## Installation
-
-Ensure you have Python >=3.10 <3.13 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
-
-First, if you haven't already, install uv:
+## 실행
 
 ```bash
-pip install uv
+crewai run
 ```
 
-Next, navigate to your project directory and install the dependencies:
+## 결과
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
-### Customizing
+아래와 같은 형식으로 요약해줍니다.
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+```markdown
+# Now Top3 Trends
 
-- Modify `src/trending_scraper/config/agents.yaml` to define your agents
-- Modify `src/trending_scraper/config/tasks.yaml` to define your tasks
-- Modify `src/trending_scraper/crew.py` to add your own logic, tools and specific args
-- Modify `src/trending_scraper/main.py` to add custom inputs for your agents and tasks
+## 1. Keyword: 최원준
 
-## Running the Project
+**Why it's trending:** 최원준 is trending due to a recent trade in the Korean professional baseball league (KBO). He was involved in a 3-for-3 trade between KIA Tigers and NC Dinos.
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+## 2. Keyword: 구준엽
 
-```bash
-$ crewai run
+**Why it's trending:** 구준엽 (DJ Koo) is trending because of his continued devotion to his late wife, Taiwanese actress Barbie Hsu (서희원). News reports detail his daily routine of maintaining her belongings and the touching display of love.
+
+## 3. Keyword: 차은우
+
+**Why it's trending:** 차은우 (Cha Eun-woo) is currently trending because he has recently enlisted in the military. He entered the training center on July 28th and will serve in the army band after completing his basic training.
 ```
 
-This command initializes the trending-scraper Crew, assembling the agents and assigning them tasks as defined in your configuration.
+파일은 final.md로 제공됩니다.
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+> 스크래핑 결과들은 Ouput 폴더에 저장됩니다.
 
-## Understanding Your Crew
+```markdown
+./output
+├── final.md
+├── google.md
+├── namunews.md
+├── scrapped_site.md
+├── trend.md
+└── x.md
+```
 
-The trending-scraper Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+> ⚠️ **주의:** signal 스크래핑은 오류가 있어 현재 주석처리 되어있습니다.
 
-## Support
-
-For support, questions, or feedback regarding the TrendingScraper Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
