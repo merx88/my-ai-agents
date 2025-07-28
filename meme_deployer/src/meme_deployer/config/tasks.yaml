@@ -1,17 +1,26 @@
-research_task:
-  description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
-  expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+# === Meme Token Generation ===
 
-reporting_task:
+create_meme_tokens:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Read 'output/final.md', which contains the top 3 trending keywords and their explanations.
+    For each keyword, generate meme token information including:
+    - Name
+    - Symbol (3-5 uppercase letters)
+    - Description (fun, meme-based explanation)
+    - Image prompt (description for visual generation)
+
+    Save all token information into a markdown file 'output/meme_tokens.md' with clear headings for each.
+
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A markdown file 'output/meme_tokens.md' with 3 meme tokens, each with name, symbol, description, and image prompt.
+  agent: meme_token_creator
+
+
+generate_meme_token_images:
+  description: >
+    Read 'output/meme_tokens.md' and extract the image prompt for each token.
+    Generate one image per token using the prompt, and save as PNG files in 'output/images/{symbol}.png'.
+
+  expected_output: >
+    3 images stored in the 'output/images' folder, named by token symbol (e.g., CWJ.png, TRDZ.png).
+  agent: meme_token_image_generator
