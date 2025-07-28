@@ -1,8 +1,9 @@
 import sys, os
-from notion_uploader import NotionUploader
 from dotenv import load_dotenv
-import time
 from datetime import datetime
+
+from notion_py.config import DATABASE_ID, NOTION_API_KEY
+from notion_py.database import NotionDatabase
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 sys.path.append(BASE_DIR)
@@ -11,7 +12,6 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task, after_kickoff
 from crewai_tools import FileWriterTool, SeleniumScrapingTool
 from crewai_tools.tools.tavily_search_tool.tavily_search_tool import TavilySearchTool
-
 
 
 signal_scraping_tool = SeleniumScrapingTool(website_url='https://signal.bz/',css_element='.container',wait_time=5)
@@ -28,17 +28,9 @@ file_writer_tool = FileWriterTool(file_name="scrapped_site.md", directory="outpu
 trend_writer_tool = FileWriterTool(file_name="trend.md", directory="output", overwrite=True )
 final_writer_tool = FileWriterTool(file_name="final.md", directory="output", overwrite=True )
 
-
 tavily_tool = TavilySearchTool()
 
-
-load_dotenv() 
-
-NOTION_API_KEY = os.getenv("NOTION_API_KEY")
-DATABASE_ID = os.getenv("DATABASE_ID")
-
 now_date = datetime.now().isoformat()
-
 
 @CrewBase
 class TrendingScraper:
@@ -49,8 +41,25 @@ class TrendingScraper:
 
     @after_kickoff
     def save_results_on_notion(self, output):
-        uploader = NotionUploader(NOTION_API_KEY, DATABASE_ID)
-        uploader.upload_report("final", now_date)
+        notion = NotionDatabase(NOTION_API_KEY, DATABASE_ID)
+        page = notion.add_page({
+            "제목": { 
+                "title": [
+                    {
+                        "text": {
+                            "content": f"트렌드 리포트"
+                        }
+                    }
+                ]
+            },
+            "날짜": {  
+                "date": {
+                    "start": now_date
+                }
+            },
+        })
+        notion.add_blocks_from_markdown("output/final.md", page["id"])
+
         
 
     # === Agents ===
