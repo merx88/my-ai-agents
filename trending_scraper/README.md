@@ -2,6 +2,21 @@
 
 나무뉴스, 구글 실시간 검색어, X 에서 트렌드를 찾아 이유와 함께 마크다운으로 노션에 저장해주는 에이전트입니다
 
+## 세팅
+
+```bash
+#LLM
+MODEL="Model"
+GEMINI_API_KEY="your_key"
+
+# notion
+NOTION_API_KEY = "your_key"
+DATABASE_ID = "your_db_id"
+
+#tavily
+TAVILY_API_KEY="your_key"
+```
+
 ## 실행
 
 ```bash
