@@ -1,0 +1,59 @@
+build_meme_token_sites:
+  description: >
+    Read 'output/meme_tokens.md' and for each token listed:
+    - Extract the following:
+      - name
+      - symbol
+      - description
+      - tagline
+    - Locate the token's image at 'output/images/{symbol}.png'.
+    - Build a visually engaging, meme-coin-style landing page inspired by:
+      - https://www.pepe.vip/
+      - https://dogecoin.com/
+
+    The site should be fun, bold, and community-driven. Use TailwindCSS and apply the following structure and styles:
+
+    ● Hero Section
+      - Gradient or dark background with large heading and tagline
+      - Meme image (floating animation preferred)
+      - Big, playful font (bold + drop shadow)
+      - Optional emojis (⚡️🚀🐸🐶) for energy
+      - Prominent CTA buttons (e.g. Telegram, Twitter)
+
+    ● About Section
+      - Card-style layout with explanation pulled from the description
+
+    ● Tokenomics Section (Placeholder)
+      - Simple container with title and placeholder text (optional icon)
+
+    ● Community Section
+      - Styled buttons or icons linking to social platforms (with hover effects)
+
+    ● Responsive Layout
+      - Should look good on mobile & desktop
+      - Use padding/margin intelligently
+
+    Save each generated HTML file as:
+    'output/sites/{symbol}/index.html'
+
+  expected_output: >
+    For each token listed in 'output/meme_tokens.md', generate one styled landing page
+    saved under 'output/sites/{symbol}/index.html', including image and design elements
+    that match meme coin culture.
+
+  agent: meme_token_site_designer
+
+
+
+# package_sites_for_deployment:
+#   description: >
+#     Prepare all generated HTML sites for deployment.
+#     - Ensure directory structure is clean
+#     - Validate image paths and HTML
+#     - Optionally generate a README or deployment guide
+#     - Optionally compress folders into .zip for static hosting or push to GitHub Pages/Vercel
+
+#   expected_output: >
+#     A ready-to-deploy folder structure under 'output/sites/' with clean HTML pages, ready for Vercel or static hosting.
+
+#   agent: meme_token_site_deployer
