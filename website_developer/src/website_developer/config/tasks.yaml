@@ -1,48 +1,75 @@
 build_meme_token_sites:
   description: >
-    Read 'output/meme_tokens.md' and for each token listed:
-    - Extract the following:
-      - name
-      - symbol
-      - description
-      - tagline
-    - Locate the token's image at 'output/images/{symbol}.png'.
-    - Build a visually engaging, meme-coin-style landing page inspired by:
-      - https://www.pepe.vip/
-      - https://dogecoin.com/
+    Read 'output/meme_tokens.md' and for each token extract:
+    - Name, Symbol, Description, Tagline, Image Prompt
 
-    The site should be fun, bold, and community-driven. Use TailwindCSS and apply the following structure and styles:
+    Select a layout pattern based on description and image prompt using 'layout_patterns.yaml'
 
-    ● Hero Section
-      - Gradient or dark background with large heading and tagline
-      - Meme image (floating animation preferred)
-      - Big, playful font (bold + drop shadow)
-      - Optional emojis (⚡️🚀🐸🐶) for energy
-      - Prominent CTA buttons (e.g. Telegram, Twitter)
+    Use the selected layout pattern to determine:
+    - Section order
+    - Hero section alignment
+    - Logo image position
+    - Font style and animation
+    - CTA button styling
 
-    ● About Section
-      - Card-style layout with explanation pulled from the description
-
-    ● Tokenomics Section (Placeholder)
-      - Simple container with title and placeholder text (optional icon)
-
-    ● Community Section
-      - Styled buttons or icons linking to social platforms (with hover effects)
-
-    ● Responsive Layout
-      - Should look good on mobile & desktop
-      - Use padding/margin intelligently
-
-    Save each generated HTML file as:
+    Generate the HTML using these settings and save it to:
     'output/sites/{symbol}/index.html'
 
   expected_output: >
-    For each token listed in 'output/meme_tokens.md', generate one styled landing page
-    saved under 'output/sites/{symbol}/index.html', including image and design elements
-    that match meme coin culture.
+    A styled, unique landing page for each token using TailwindCSS and Google Fonts,
+    saved to 'output/sites/{symbol}/index.html'
 
   agent: meme_token_site_designer
 
+
+## LEGACY
+
+# build_meme_token_sites:
+#   description: >
+#     Read 'output/meme_tokens.md' and for each token extract the following:
+#     - Name, Symbol, Description, and Tagline
+#     - Token image located at 'output/images/{symbol}.png'
+
+#     The website structure should follow the layout below, 
+#     but the **visual style must be customized for each token** based on its description:
+
+#     ● Shared Section Structure:
+#       - Hero Section:
+#           - Use a solid background color derived from the token's theme keywords
+#           - Center the token logo with an animation effect (e.g., bounce, pulse)
+#           - Display token name and symbol in large, bold, stylish fonts
+#           - Include a catchy tagline with emojis
+#           - Add CTA buttons: Telegram and Twitter (with hover effects)
+
+#       - About Section:
+#           - Visualize the description using a card-style layout
+#           - Use soft background colors, rounded corners, and subtle shadows
+
+#       - Tokenomics Section:
+#           - Include placeholder text: "📊 Tokenomics will be revealed soon!"
+#           - Apply fonts and background consistent with the overall token theme
+
+#       - Community Section:
+#           - Use a custom background color per token theme
+#           - Buttons should include hover animations
+#           - Include short, friendly community invitation text
+
+#     ● Style Diversification Guidelines:
+#       - Use TailwindCSS as the base framework, but:
+#         - Color theme should be dynamically chosen based on token keywords
+#         - Fonts should vary using expressive Google Fonts (e.g., Bungee, Comic Neue, Orbitron, etc.)
+#         - Use different animation types per token (e.g., bounce, shake, pulse)
+#       - The structure remains the same, but each site must have a distinct visual identity
+
+#     ● Output:
+#       - Save each generated HTML page to: 'output/sites/{symbol}/index.html'
+
+#   expected_output: >
+#     For each token:
+#     - An HTML website is generated with a shared structure but a unique color, font, and animation style
+#     - Each result is saved to 'output/sites/{symbol}/index.html'
+
+#   agent: meme_token_site_designer
 
 
 # package_sites_for_deployment:
