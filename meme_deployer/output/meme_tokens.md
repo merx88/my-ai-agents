@@ -1,31 +1,31 @@
 # Meme Tokens
 
-## 1. 최원준 (Choi Won-jun)
+## 1. 최원준 (Choi Won-jun) - KBO Trade
 
-**Name:** WonjunWonders
+**Name:** WonjunWhale
 
-**Symbol:** WONDR
+**Symbol:** WHALE
 
-**Description:** A token celebrating the surprising trade of 최원준! Like his unexpected move, this token aims for unexpected gains. Invest and become a trade master!
+**Description:** A token celebrating the unexpected splash 최원준 made in the KBO trade market! Like a whale surfacing in a new ocean, WonjunWhale brings excitement and new possibilities. HODL for grand slams!
 
-**Image Prompt:** A baseball player wearing a tiger and dinosaur hybrid jersey, symbolizing the trade between KIA Tigers and NC Dinos, with a surprised expression.
+**Image Prompt:** A cartoon whale wearing a KIA Tigers baseball cap, swimming through a sea of baseballs. Vivid colors, dynamic pose, triumphant expression. Square ratio (1:1). Negative prompt: blurry, text, low quality.
 
-## 2. 구준엽 (Koo Jun-yeop)
+## 2. 구준엽 (Koo Jun-yeop) - DJ Koo's Love
 
-**Name:** DJKooLove
+**Name:** KooForever
 
-**Symbol:** DJKLO
+**Symbol:** KLOVE
 
-**Description:** Honoring 구준엽's unwavering love! This token is dedicated to lasting commitment and cherishing precious memories. Hold it close to your heart, just like DJ Koo holds his love.
+**Description:** A testament to eternal love and devotion, inspired by DJ Koo's unwavering affection. KooForever embodies the strength and beauty of lasting commitment. A love story for the ages, now a coin for the blockchain!
 
-**Image Prompt:** DJ Koo (구준엽) lovingly polishing a pair of disco-era sunglasses, with a faint, ethereal image of Barbie Hsu (서희원) smiling in the reflection.
+**Image Prompt:** A stylized heart-shaped vinyl record with DJ Koo's silhouette reflected in its surface. Soft, warm lighting, elegant design. Square ratio (1:1). Negative prompt: blurry, text, low quality.
 
-## 3. 차은우 (Cha Eun-woo)
+## 3. 차은우 (Cha Eun-woo) - Military Enlistment
 
-**Name:** EunwooEnlist
+**Name:** EunwooArmy
 
-**Symbol:** ENEWS
+**Symbol:** ARMY
 
-**Description:** Commemorating 차은우's enlistment! This token marches towards success with the discipline and charm of 차은우. Salute to the gains!
+**Description:** Supporting 차은우 as he bravely serves his country! EunwooArmy is a token for fans and patriots alike. Join the ranks and show your love and support! Semper Fi!
 
-**Image Prompt:** A stylized cartoon image of Cha Eun-woo in military uniform playing a trumpet with musical notes forming a rocket taking off into space.
+**Image Prompt:** A cartoon image of Cha Eun-woo in military uniform saluting with a determined expression, with music notes floating around him. Patriotic color scheme (red, white, blue). Square ratio (1:1). Negative prompt: blurry, text, low quality.
