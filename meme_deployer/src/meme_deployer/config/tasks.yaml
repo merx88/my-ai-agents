@@ -1,38 +1,161 @@
-create_meme_tokens:
+# create_meme_tokens:
+#   description: >
+#     Read 'output/final.md', which contains the top 3 trending keywords and their explanations.
+#     For each keyword, generate meme token information including:
+#     - Name
+#     - Symbol (3-5 uppercase letters)
+#     - Description (fun, meme-based explanation)
+#     - Image prompt: Generate a highly detailed, evocative, and strategic description for visual generation, specifically tailored for a meme token.
+#       This image prompt MUST strictly adhere to the following principles to ensure it is iconic, viral-ready, and high-quality:
+
+#       **[Image Prompt Generation Principles for Meme Tokens]**
+
+#       1.  **Be ICONIC & MEMORABLE:** Describe a visual that is instantly recognizable, distinct, and designed for viral sharing. Avoid generic poses or common elements unless stylized uniquely. Aim for a "snapshot" moment that encapsulates the trend.
+#       2.  **Be DEEPLY SYMBOLIC & THEMATIC:** Clearly translate the "Why it's trending" explanation into a powerful visual metaphor or direct representation. Every element should contribute to the core message (e.g., devotion, new chapter, impactful change).
+#       3.  **Be VISUALLY STRIKING & ARTISTIC:** Use vivid, descriptive language for the aesthetic. Specify the **exact artistic style** (e.g., 'photorealistic', 'stylized digital illustration', 'pop art', 'hyper-realistic cinematic render') that best suits the meme's tone. Describe lighting (e.g., 'golden hour glow', 'neon reflections', 'dramatic backlighting'), color palette (e.g., 'vibrant and bold', 'soft ethereal pastels', 'contrasting team colors'), and overall atmosphere (e.g., 'triumphant', 'serene', 'energetic').
+#       4.  **Be CLEAN & FOCUSED:** The main subject must be the unambiguous focal point. Describe a background that is either minimalist, symbolically relevant, or intentionally blurred to enhance focus. Avoid clutter.
+#       5.  **Be SPECIFIC & DETAILED:** Provide granular details for the subject's **expression, pose, specific objects held or interacted with, clothing details, and any unique visual effects.** (e.g., not just 'military uniform' but 'impeccably tailored South Korean military uniform with polished boots').
+#       6.  **Ensure SQUARE RATIO:** Explicitly state "Square ratio (1:1)" at the end of the prompt for optimal token display.
+#       7.  **Include QUALITY CONTROL (Negative Prompt):** ALWAYS end the prompt with a comprehensive negative prompt to exclude undesirable elements (e.g., `Negative prompt: blurry, text, low quality, deformed, bad anatomy, ugly, generic, watermark, oversaturated, unrealistic`).
+
+#       **[Example of a High-Quality Image Prompt for a Meme Token]**
+#       * "An iconic, striking full-body portrait of Cha Eun-woo, conveying a dignified and hopeful military enlistment. He stands upright and poised in a brand-new, impeccably tailored South Korean military uniform with polished boots and a neat, short military haircut. His expression is confident and serene, featuring his characteristic gentle smile that carries a subtle sense of resolve and a promise of return. He is positioned against a clean, minimalist background of a bright, clear sky, with subtle, inspiring light rays radiating from behind him, symbolizing a new chapter and national pride. The overall image exudes a sense of honor, anticipation, and iconic visual presence, perfect for a viral meme token. This is a photorealistic, high-detail image with a powerful, clean aesthetic. Square ratio (1:1). Negative prompt: blurry, text, low quality, cartoon, generic, overly stern, sad, messy uniform."
+
+#     Save all token information into a markdown file 'output/meme_tokens.md' with clear headings for each.
+
+#   expected_output: >
+#     A markdown file 'output/meme_tokens.md' with 3 meme tokens, each with name, symbol, description, and image prompt.
+#   agent: meme_token_creator
+
+
+# create_meme_tokens:
+#   description: >
+#     Read 'output/final.md', which contains the top 3 trending keywords and their explanations.
+#     For each keyword, generate meme token information including:
+#     - Name
+#     - Symbol (3-5 uppercase letters)
+#     - Description (fun, meme-based explanation)
+#     - Image prompt: Generate a highly detailed, evocative, and strategic visual description tailored for meme token representation.
+
+#     The image prompt MUST strictly follow the rules below to ensure high virality and accurate representation of real-life trends and figures:
+
+#     **[Image Prompt Generation Principles for Meme Tokens]**
+
+#     1. **Be ICONIC & MEMORABLE:**  
+#        Craft a visual concept that instantly captures attention, built around a defining moment related to the celebrity. Avoid generic settings. Choose emotionally charged, shareable visuals.
+
+#     2. **Be HISTORICALLY AND SOCIALLY ACCURATE:**  
+#        If the keyword includes a real public figure (e.g., Cha Eun-woo), **explicitly reference their name**, physical characteristics, clothing, posture, and associated event (e.g., military enlistment on July 28th, 2025).
+
+#     3. **Be STYLISTICALLY POWERFUL:**  
+#        Choose a bold visual aesthetic appropriate to the celebrity's brand or public image.
+
+#     4. **Be SPECIFIC:**  
+#        Describe facial expression, pose, clothing style, symbolic props and background elements directly tied to the trend explanation.
+
+#     5. **Add Negative Prompt for Quality Control:**  
+#        Always add:  
+#        `Negative prompt: blurry, text, watermark, low quality, deformed, bad anatomy, oversaturated, extra limbs, poorly drawn face, generic background`
+
+#   expected_output: >
+#     A markdown file 'output/meme_tokens.md' with 3 meme tokens, each containing:
+#     - Token Name
+#     - Symbol
+#     - Fun meme-style description
+#     - High-quality image prompt following the rules above, explicitly referring to the real person if applicable
+
+#   agent: meme_token_creator
+
+
+# create_meme_tokens:
+#   description: >
+#     Read 'output/final.md', which contains the top 3 trending keywords and their explanations.
+#     For each keyword, generate meme token information including:
+#     - Name
+#     - Symbol (3-5 uppercase letters)
+#     - Description (fun, meme-based explanation)
+#     - Image prompt: A highly detailed and strategic description for visual generation.
+#       This prompt must ensure the image is:
+#       1.  **Iconic & Memorable:** Easily recognizable and suitable for viral spread.
+#       2.  **Symbolic & Thematic:** Clearly conveys the meme's core message or emotion.
+#       3.  **Visually Striking:** Uses vivid descriptions for style, lighting, and composition.
+#       4.  **Clean & Focused:** Prioritizes the main subject with a concise or symbolic background.
+#       5.  **Specific:** Includes details on subject, action, expression, colors, and desired atmosphere.
+#       6.  **Square Ratio:** Explicitly requests a 1:1 aspect ratio for optimal token display.
+#       7.  **Quality Controlled:** Includes a negative prompt to exclude undesirable elements (e.g., blurry, text, low quality).
+
+#     Save all token information into a markdown file 'output/meme_tokens.md' with clear headings for each.
+
+#   expected_output: >
+#     A markdown file 'output/meme_tokens.md' with 3 meme tokens, each with name, symbol, description, and image prompt.
+#   agent: meme_token_creator
+
+# generate_meme_token_images:
+#   description: >
+#     Read 'output/meme_tokens.md' and extract the image prompt and symbol for each meme token listed.
+#     For each token explicitly found in the file, generate exactly one image using the corresponding prompt.
+#     Save each image as a PNG file in 'output/images/{symbol}.png'.
+#     Do NOT invent, infer, or hallucinate any tokens or prompts not explicitly written in the file.
+
+#   expected_output: >
+#     One PNG image per token listed in the markdown file.
+#     Each image should be saved to the 'output/images' folder using the token symbol as the filename (e.g., CWJT.png).
+#     The total number of images must match the number of tokens in the file — no more, no less.
+
+#   agent: meme_token_image_generator
+
+
+
+# generate_meme_token_images:
+#   description: >
+#     Read 'output/meme_tokens.md' and extract the image prompt and symbol for each meme token listed.
+#     For each token explicitly found in the file, generate exactly one image using the corresponding prompt.
+#     Save each image as a PNG file in 'output/images/{symbol}.png'.
+#     Do NOT invent, infer, or hallucinate any tokens or prompts not explicitly written in the file.
+
+#   expected_output: >
+#     One PNG image per token listed in the markdown file.
+#     Each image should be saved to the 'output/images' folder using the token symbol as the filename (e.g., CWJT.png).
+#     The total number of images must match the number of tokens in the file — no more, no less.
+
+#   agent: meme_token_image_generator
+generate_token_metadata:
   description: >
-    Read 'output/final.md', which contains the top 3 trending keywords and their explanations.
-    For each keyword, generate meme token information including:
-    - Name
-    - Symbol (3-5 uppercase letters)
-    - Description (fun, meme-based explanation)
-    - Image prompt: Generate a highly detailed, evocative, and strategic description for visual generation, specifically tailored for a meme token.
-      This image prompt MUST strictly adhere to the following principles to ensure it is iconic, viral-ready, and high-quality:
+    Read 'output/final.md', which contains the trending keyword and its explanation.
+    Given a trend keyword and a short explanation, create meme token metadata.
+    This includes a creative name, an all-uppercase symbol (3–6 letters), and a brief, witty description 
+    connecting the trend to meme culture.
+    The name should be catchy or playful, and the description should highlight why this token exists.
+    After generating the metadata, call the File Writer Tool to save the result as a JSON file named 'output/metadata/{SYMBOL}.json'.
+    You must include the correct file name based on the symbol.
+  expected_output: >
+    A JSON file output/metadata/{symbol}.json
+    A JSON object with the following structure:
+    {
+      "name": "<Token Name>",
+      "symbol": "<SYMBOL>",
+      "description": "<Witty, concise token description>"
+    }
 
-      **[Image Prompt Generation Principles for Meme Tokens]**
+  agent: token_meta_generator
 
-      1.  **Be ICONIC & MEMORABLE:** Describe a visual that is instantly recognizable, distinct, and designed for viral sharing. Avoid generic poses or common elements unless stylized uniquely. Aim for a "snapshot" moment that encapsulates the trend.
-      2.  **Be DEEPLY SYMBOLIC & THEMATIC:** Clearly translate the "Why it's trending" explanation into a powerful visual metaphor or direct representation. Every element should contribute to the core message (e.g., devotion, new chapter, impactful change).
-      3.  **Be VISUALLY STRIKING & ARTISTIC:** Use vivid, descriptive language for the aesthetic. Specify the **exact artistic style** (e.g., 'photorealistic', 'stylized digital illustration', 'pop art', 'hyper-realistic cinematic render') that best suits the meme's tone. Describe lighting (e.g., 'golden hour glow', 'neon reflections', 'dramatic backlighting'), color palette (e.g., 'vibrant and bold', 'soft ethereal pastels', 'contrasting team colors'), and overall atmosphere (e.g., 'triumphant', 'serene', 'energetic').
-      4.  **Be CLEAN & FOCUSED:** The main subject must be the unambiguous focal point. Describe a background that is either minimalist, symbolically relevant, or intentionally blurred to enhance focus. Avoid clutter.
-      5.  **Be SPECIFIC & DETAILED:** Provide granular details for the subject's **expression, pose, specific objects held or interacted with, clothing details, and any unique visual effects.** (e.g., not just 'military uniform' but 'impeccably tailored South Korean military uniform with polished boots').
-      6.  **Ensure SQUARE RATIO:** Explicitly state "Square ratio (1:1)" at the end of the prompt for optimal token display.
-      7.  **Include QUALITY CONTROL (Negative Prompt):** ALWAYS end the prompt with a comprehensive negative prompt to exclude undesirable elements (e.g., `Negative prompt: blurry, text, low quality, deformed, bad anatomy, ugly, generic, watermark, oversaturated, unrealistic`).
 
-      **[Example of a High-Quality Image Prompt for a Meme Token]**
-      * "An iconic, striking full-body portrait of Cha Eun-woo, conveying a dignified and hopeful military enlistment. He stands upright and poised in a brand-new, impeccably tailored South Korean military uniform with polished boots and a neat, short military haircut. His expression is confident and serene, featuring his characteristic gentle smile that carries a subtle sense of resolve and a promise of return. He is positioned against a clean, minimalist background of a bright, clear sky, with subtle, inspiring light rays radiating from behind him, symbolizing a new chapter and national pride. The overall image exudes a sense of honor, anticipation, and iconic visual presence, perfect for a viral meme token. This is a photorealistic, high-detail image with a powerful, clean aesthetic. Square ratio (1:1). Negative prompt: blurry, text, low quality, cartoon, generic, overly stern, sad, messy uniform."
+generate_image_prompt:
+  description: >
+    Based on a trend keyword and its explanation, write a detailed prompt suitable for image generation models
+    (e.g., DALL·E).
 
-    Save all token information into a markdown file 'output/meme_tokens.md' with clear headings for each.
+    If the trend involves a real person, describe their physical traits — such as face shape, hairstyle, expression,
+    clothing, and posture — in detail to help the model generate a visually similar person without needing a reference image.
+    Use a cinematic or photo-realistic style.
+
+    If the trend is abstract, symbolic, or conceptual, use styles like cartoon, isometric, or infographic.
+    Style selection must match the tone of the trend (e.g., serious, humorous, emotional, satirical).
 
   expected_output: >
-    A markdown file 'output/meme_tokens.md' with 3 meme tokens, each with name, symbol, description, and image prompt.
-  agent: meme_token_creator
+    A txt file output/prompts/{symbol}.txt
+    A plain-text image generation prompt.
+    The output should be a single English sentence or paragraph suitable for guiding an AI image generation model.
+    Do not wrap it in Markdown or JSON. plz save this file in output/prompts
 
-
-generate_meme_token_images:
-  description: >
-    Read 'output/meme_tokens.md' and extract the image prompt for each token.
-    Generate one image per token using the prompt, and save as PNG files in 'output/images/{symbol}.png'.
-
-  expected_output: >
-    3 images stored in the 'output/images' folder, named by token symbol (e.g., CWJ.png, TRDZ.png).
-  agent: meme_token_image_generator
+  agent: visual_prompt_generator
