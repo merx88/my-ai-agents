@@ -1,3 +1,3 @@
-## 1. Keyword: 최원준
+## 2. Keyword: 구준엽
 
-**Why it's trending:** 최원준 is trending due to a recent trade in the Korean professional baseball league (KBO). He was involved in a 3-for-3 trade between KIA Tigers and NC Dinos.
+**Why it's trending:** 구준엽 (DJ Koo) is trending because of his continued devotion to his late wife, Taiwanese actress Barbie Hsu (서희원). News reports detail his daily routine of maintaining her belongings and the touching display of love. 

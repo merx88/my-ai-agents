@@ -33,19 +33,6 @@ class MemeDeployer:
     agents: List[BaseAgent]
     tasks: List[Task]
 
-    # @agent
-    # def meme_token_creator(self) -> Agent:
-    #     return Agent(
-    #         config=self.agents_config["meme_token_creator"],
-    #         tools=[file_read_tool, meme_tokens_writer_tool],
-    #     )
-
-    # @agent
-    # def meme_token_image_generator(self) -> Agent:
-    #     return Agent(
-    #         config=self.agents_config["meme_token_image_generator"],
-    #         tools=[meme_tokens_read_tool, dalle_tool, image_saver_tool],
-    #     )
 
     @agent
     def token_meta_generator(self) -> Agent:
@@ -60,13 +47,14 @@ class MemeDeployer:
             config=self.agents_config["visual_prompt_generator"],
             tools=[file_read_tool, prompt_writer_tool],
         )
-    # @task
-    # def create_meme_tokens(self) -> Task:
-    #     return Task(config=self.tasks_config["create_meme_tokens"])
 
-    # @task
-    # def generate_meme_token_images(self) -> Task:
-    #     return Task(config=self.tasks_config["generate_meme_token_images"])
+    # @agent
+    # def meme_token_image_generator(self) -> Agent:
+    #     return Agent(
+    #         config=self.agents_config["meme_token_image_generator"],
+    #         tools=[meme_tokens_read_tool, dalle_tool, image_saver_tool],
+    #     )
+
 
     @task
     def generate_token_metadata(self) -> Task:
@@ -75,6 +63,11 @@ class MemeDeployer:
     @task
     def generate_image_prompt(self) -> Task:
         return Task(config=self.tasks_config["generate_image_prompt"])
+
+    # @task
+    # def generate_meme_token_images(self) -> Task:
+    #     return Task(config=self.tasks_config["generate_meme_token_images"])
+
 
 
     @crew
