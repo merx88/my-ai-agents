@@ -5,10 +5,10 @@ generate_token_metadata:
     This includes a creative name, an all-uppercase symbol (3–6 letters), and a brief, witty description 
     connecting the trend to meme culture.
     The name should be catchy or playful, and the description should highlight why this token exists.
-    After generating the metadata, call the File Writer Tool to save the result as a JSON file named 'output/metadata/{SYMBOL}.json'.
+    After generating the metadata, call the File Writer Tool to save the result as a JSON file named 'output/metadata/token_metadata.json'.
     You must include the correct file name based on the symbol.
   expected_output: >
-    A JSON file output/metadata/{symbol}.json
+    A JSON file output/metadata/token_metadata.json
     A JSON object with the following structure:
     {
       "name": "<Token Name>",
@@ -17,8 +17,6 @@ generate_token_metadata:
     }
 
   agent: token_meta_generator
-
-
 
 visual_prompt_generator:
   role: >
@@ -58,24 +56,62 @@ generate_image_prompt:
     Use grounded and literal imagery. Avoid metaphorical or symbolic language unless it is directly relevant to the trend itself. Make the scene visually intentional by specifying the setting, background elements, mood, lighting, and overall atmosphere to create a vivid and unambiguous mental image.
 
   expected_output: >
-    A txt file output/prompts/{symbol}.txt
+    A txt file output/prompts/image_prompt.txt
     A plain-text image generation prompt.
     The output should be a single English paragraph suitable for guiding an AI image generation model.
     Do not wrap it in Markdown or JSON. Save this file in output/prompts.
 
   agent: visual_prompt_generator
 
+generate_image_from_file:
+  description: >
+    Read the image prompt from 'output/prompts/image_prompt.txt'.
+    Use that prompt to generate an image with DALL·E via the DalleTool.
+    Once the image is generated and the URL is available, use it to download and save the image 
+    to 'output/images/token_image.png'.
+  expected_output: >
+    Final saved image confirmation message, e.g. "Image saved to output/images/token_image.png"
+  agent: image_generator
 
-# generate_meme_token_images:
-#   description: >
-#     Read 'output/meme_tokens.md' and extract the image prompt and symbol for each meme token listed.
-#     For each token explicitly found in the file, generate exactly one image using the corresponding prompt.
-#     Save each image as a PNG file in 'output/images/{symbol}.png'.
-#     Do NOT invent, infer, or hallucinate any tokens or prompts not explicitly written in the file.
+assemble_metadata:
+  description: >
+    Read the metadata files in 'output/metadata/' folder to extract:
+    - name
+    - symbol
+    - description
 
-#   expected_output: >
-#     One PNG image per token listed in the markdown file.
-#     Each image should be saved to the 'output/images' folder using the token symbol as the filename (e.g., CWJT.png).
-#     The total number of images must match the number of tokens in the file — no more, no less.
+    Assume the image has been saved to 'output/images/token_image.png'.
 
-#   agent: meme_token_image_generator
+    Your task is to return a Python dictionary containing all fields combined:
+
+    {
+      "name": "<token name>",
+      "symbol": "<token symbol>",
+      "description": "<token description>",
+      "image_path": "output/images/token_image.png"
+    }
+
+    Your final answer MUST be valid Python code that defines and prints this dictionary.
+  expected_output: >
+    A Python dictionary in code format that includes all fields and prints the result.
+  agent: final_result_assembler
+
+
+assemble_metadata:
+  description: >
+    Read the file 'output/metadata/token_metadata.json' which contains JSON-formatted meme token metadata
+    (fields: name, symbol, description). Combine this metadata with the fixed image path
+    'output/images/token_image.png' and create a Python dictionary named `final_token_metadata`.
+
+    Save this dictionary into a Python file located at 'output/final_token_metadata.py'. The file must define
+    the variable `final_token_metadata` as a Python dictionary with the following structure:
+
+    final_token_metadata = {
+      "name": "...",
+      "symbol": "...",
+      "description": "...",
+      "image_path": "output/images/token_image.png"
+    }
+  expected_output: >
+    A python file output/final_token_metadata.json
+  agent: metadata_assembler
