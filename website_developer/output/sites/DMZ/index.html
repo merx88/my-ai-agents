@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoudSpeakerDAO (DMZ)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Anton', sans-serif;
+            animation: wave 3s infinite alternate;
+        }
+        @keyframes wave {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(5px); }
+        }
+
+        .alpha-bro {
+            background-color: #FF4500;
+            color: #000000;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .alpha-bro:hover {
+            background-color: #FFD700;
+            color: #000000;
+        }
+
+        .victory-flash {
+           animation: victory-flash 1.5s infinite;
+        }
+        @keyframes victory-flash {
+            0% {box-shadow: 0 0 5px #FFD700;}
+            50% {box-shadow: 0 0 20px #FF4500;}
+            100% {box-shadow: 0 0 5px #FFD700;}
+        }
+
+    </style>
+</head>
+<body class="bg-F0F0F0 text-000000">
+
+    <!-- Hero Section -->
+    <section id="hero" class="py-20 text-center">
+        <img src="images/token_image.png" alt="LoudSpeakerDAO logo" class="mx-auto h-32">
+        <h1 class="text-5xl font-bold mb-4">LoudSpeakerDAO</h1>
+        <p class="text-lg mb-8">Amplify Your Voice.</p>
+        <a href="#" class="alpha-bro">Join the Movement</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4">About DMZ</h2>
+            <p class="text-gray-700">LoudSpeakerDAO is a decentralized autonomous organization focused on amplifying community voices and driving impactful change. Built for the modern era, DMZ leverages blockchain technology to create a transparent and equitable platform for global collaboration.</p>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="py-12 bg-F0F0F0">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4">Join the Community</h2>
+            <p class="text-gray-700">Connect with fellow DMZ enthusiasts and contribute to the future of decentralized communication.</p>
+            <a href="#" class="alpha-bro">Connect Now</a>
+        </div>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section id="tokenomics" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4">Tokenomics</h2>
+            <p class="text-gray-700">Learn about the DMZ token and its role in the LoudSpeakerDAO ecosystem.</p>
+            <ul>
+                <li>Total Supply: 1,000,000,000 DMZ</li>
+                <li>Distribution: Community, Development, Marketing</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center text-gray-600">
+        &copy; 2024 LoudSpeakerDAO. All rights reserved.
+    </footer>
+
+</body>
+</html>

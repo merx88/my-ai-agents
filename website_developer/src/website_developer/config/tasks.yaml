@@ -1,27 +1,392 @@
+# extract_token_moods:
+#   description: >
+#     Read 'token_metadata.json' and for each token extract:
+#     - name, symbol, description
+
+#     From the description, infer the overall mood or feeling.
+#     Output 5–10 English keywords that describe the emotional tone or style direction,
+#     suitable for influencing visual design decisions (e.g. colors, fonts, layout).
+
+#     Examples of moods: 'nostalgic', 'playful', 'patriotic', 'dreamy', 'bold', 'fun', 'elegant'.
+
+#     Save result to 'output/moods/token_mood.json' in the following format:
+#     {
+#       "name": "EunwooCoin",
+#       "symbol": "EUNWOO",
+#       "mood_keywords": ["sentimental", "patriotic", "hopeful", "starlit", "youthful"]
+#     }
+
+#   expected_output: >
+#     A JSON file per token at 'output/moods/token_mood.json' listing 5–10 mood/style keywords
+#     that describe the design atmosphere of the token.
+
+#   agent: meme_mood_curator
+
+extract_token_moods:
+  description: >
+    Read 'token_metadata.json' and for each token extract:
+    - name, symbol, description
+
+    From the description, infer the overall mood or feeling.
+    Output 5–10 English keywords that describe the emotional tone or style direction,
+    suitable for influencing visual design decisions (e.g. colors, fonts, layout).
+
+    All keywords must not lean toward only one visual style.
+    Ensure diversity in mood/style by including terms from different spectrums 
+    (e.g., energetic vs. calm, modern vs. retro, minimal vs. bold).
+    Include at least one or two keywords that introduce contrast to the dominant mood.
+
+    Examples of moods: 'nostalgic', 'playful', 'patriotic', 'dreamy', 'bold', 'fun', 'elegant'.
+
+    Save result to 'output/moods/token_mood.json' in the following format:
+    {
+      "name": "EunwooCoin",
+      "symbol": "EUNWOO",
+      "mood_keywords": ["sentimental", "patriotic", "hopeful", "starlit", "youthful"]
+    }
+
+  expected_output: >
+    A JSON file per token at 'output/moods/token_mood.json' listing 5–10 mood/style keywords
+    that describe the design atmosphere of the token. 
+    The keywords must show a variety of tones and styles to avoid overfitting to one design pattern.
+
+  agent: meme_mood_curator
+
 build_meme_token_sites:
   description: >
-    Read 'output/meme_tokens.md' and for each token extract:
-    - Name, Symbol, Description, Tagline, Image Prompt
+    Read 'output/moods/token_mood.json' and for each token extract:
+    - name
+    - symbol
+    - mood_keywords (5–10 keywords that describe the emotional/stylistic tone)
 
-    Select a layout pattern based on description and image prompt using 'layout_patterns.yaml'
+    Use your own judgment to:
+    1. Select a layout from the full list of layout patterns (see below)
+    2. Select a color palette from the full list of palettes (see below)
 
-    Use the selected layout pattern to determine:
-    - Section order
-    - Hero section alignment
-    - Logo image position
-    - Font style and animation
-    - CTA button styling
+    Consider the emotional and stylistic tone described by mood_keywords.
+    Select the layout and palette that best fit the brand feel and intended community vibe of the token.
 
-    Generate the HTML using these settings and save it to:
-    'output/sites/{symbol}/index.html'
+    Available layout patterns:
+    - name: "Floating Island"
+      hero_alignment: center
+      image_position: top
+      section_order: ["hero", "about", "tokenomics", "community"]
+      font_style: Fredoka One
+      animation: float
+      button_style: neon-hover
+      keywords: ["floating", "light", "island", "centered", "cloud", "soft"]
+
+    - name: "Split Screen Chaos"
+      hero_alignment: left
+      image_position: right
+      section_order: ["hero", "tokenomics", "community", "about"]
+      font_style: Rubik Doodle Shadow
+      animation: wiggle
+      button_style: split-gradient
+      keywords: ["chaos", "crazy", "unexpected", "dual", "chaotic", "exploding", "lol"]
+
+    - name: "Meme Matrix"
+      hero_alignment: right
+      image_position: left
+      section_order: ["hero", "community", "tokenomics", "about"]
+      font_style: Source Code Pro
+      animation: glitch
+      button_style: matrix-hack
+      keywords: ["hacker", "matrix", "code", "cyber", "system", "ai", "discipline", "military"]
+
+    - name: "Retro Arcade"
+      hero_alignment: center
+      image_position: top
+      section_order: ["hero", "about", "tokenomics", "community"]
+      font_style: VT323
+      animation: flicker
+      button_style: pixelated
+      keywords: ["retro", "arcade", "pixel", "8bit", "oldschool", "game"]
+
+    - name: "Minimal Meme"
+      hero_alignment: center
+      image_position: top
+      section_order: ["hero", "about", "community", "tokenomics"]
+      font_style: Quicksand
+      animation: none
+      button_style: ghost-center
+      keywords: ["minimal", "clean", "simple", "quiet", "elegant"]
+
+    - name: "Pop-Art Party"
+      hero_alignment: left
+      image_position: right
+      section_order: ["hero", "about", "tokenomics", "community"]
+      font_style: Press Start 2P
+      animation: bounce
+      button_style: rainbow-border
+      keywords: ["fun", "family", "comic", "bright", "colorful", "party", "vibe"]
+
+    - name: "ZigZag Dynamic"
+      hero_alignment: right
+      image_position: right
+      section_order: ["hero", "community", "about", "tokenomics"]
+      font_style: Comic Neue
+      animation: shake
+      button_style: right-glow
+      keywords: ["dynamic", "zigzag", "lively", "quirky", "bouncy"]
+
+    - name: "Extreme Meme Machine"
+      hero_alignment: left
+      image_position: right
+      section_order: ["hero", "about", "community", "tokenomics"]
+      font_style: Carter One
+      animation: jiggle
+      button_style: exploding
+      keywords: ["insane", "meme", "blast", "explosive", "loud", "extreme"]
+
+    - name: "Galaxy Rise"
+      hero_alignment: center
+      image_position: top
+      section_order: ["hero", "tokenomics", "about", "community"]
+      font_style: Audiowide
+      animation: pulse
+      button_style: glowing-astro
+      keywords: ["galaxy", "cosmic", "rise", "space", "orbit", "astro"]
+
+    - name: "Left Brain Logic"
+      hero_alignment: left
+      image_position: left
+      section_order: ["hero", "about", "tokenomics", "community"]
+      font_style: IBM Plex Mono
+      animation: fade-in
+      button_style: outline-minimal
+      keywords: ["logic", "utility", "data", "left", "smart", "function"]
+
+    - name: "Right Brain Art"
+      hero_alignment: right
+      image_position: right
+      section_order: ["hero", "community", "about", "tokenomics"]
+      font_style: Pacifico
+      animation: zoom
+      button_style: swirl-border
+      keywords: ["creativity", "art", "right", "expression", "paint", "vivid"]
+
+    - name: "Pepe Palace"
+      hero_alignment: center
+      image_position: top
+      section_order: ["hero", "about", "community", "tokenomics"]
+      font_style: Comic Sans MS
+      animation: bounce
+      button_style: frog-flash
+      keywords: ["pepe", "frog", "meme", "internet", "classic", "weird"]
+
+    - name: "Dark Terminal"
+      hero_alignment: left
+      image_position: left
+      section_order: ["hero", "tokenomics", "about", "community"]
+      font_style: Inconsolata
+      animation: blink
+      button_style: green-terminal
+      keywords: ["terminal", "linux", "command", "dark", "console", "cli"]
+
+    - name: "Emoji Splash"
+      hero_alignment: center
+      image_position: top
+      section_order: ["hero", "about", "community", "tokenomics"]
+      font_style: Nunito
+      animation: pop
+      button_style: emoji-spin
+      keywords: ["emoji", "😂", "🔥", "🚀", "💥", "crazy", "lmao"]
+
+    - name: "Celestial Scroll"
+      hero_alignment: center
+      image_position: top
+      section_order: ["hero", "about", "community", "tokenomics"]
+      font_style: Cinzel Decorative
+      animation: shimmer
+      button_style: scroll-shadow
+      keywords: ["ancient", "scroll", "celestial", "magic", "myth", "wisdom"]
+
+    - name: "Speed Run"
+      hero_alignment: left
+      image_position: left
+      section_order: ["hero", "tokenomics", "about", "community"]
+      font_style: Rajdhani
+      animation: flash
+      button_style: speed-glow
+      keywords: ["fast", "speed", "run", "lfg", "go", "race", "degen"]
+
+    - name: "Chad Chain"
+      hero_alignment: center
+      image_position: top
+      section_order: ["hero", "tokenomics", "about", "community"]
+      font_style: Bangers
+      animation: chest-pump
+      button_style: alpha-bro
+      keywords: ["chad", "pump", "moon", "gains", "gym", "strong", "rocket"]
+
+    - name: "Stadium Surge"
+      hero_alignment: center
+      image_position: top
+      section_order: ["hero", "about", "community", "tokenomics"]
+      font_style: Anton
+      animation: wave
+      button_style: victory-flash
+      keywords: ["sports", "cheer", "stadium", "energy", "fans", "competition", "teamwork", "goal", "victory"]
+
+
+    Available color palettes:
+    - name: "Dreamy Pastel"
+      keywords: ["dream", "love", "memory", "peace", "starlight", "beloved"]
+      colors:
+        primary: "#EEDCFF"
+        secondary: "#FFFCE1"
+        text: "#1F1B3A"
+        background: "#FFFFFF"
+
+    - name: "Chaos Pop"
+      keywords: ["chaos", "crazy", "lol", "unexpected", "exploding", "rekt"]
+      colors:
+        primary: "#00FF9F"
+        secondary: "#FF00F5"
+        text: "#000000"
+        background: "#FFF633"
+
+    - name: "Cyber Hack"
+      keywords: ["matrix", "hacker", "glitch", "ai", "code", "cyber", "system"]
+      colors:
+        primary: "#00FFCC"
+        secondary: "#0F0F0F"
+        text: "#33FF33"
+        background: "#000000"
+
+    - name: "Retro Night"
+      keywords: ["retro", "arcade", "pixel", "8bit", "game"]
+      colors:
+        primary: "#FF7518"
+        secondary: "#1BFFFF"
+        text: "#FFFFFF"
+        background: "#000000"
+
+    - name: "Soft Minimal"
+      keywords: ["minimal", "simple", "clean", "quiet", "elegant"]
+      colors:
+        primary: "#FFFFFF"
+        secondary: "#F5F5F5"
+        text: "#1F2937"
+        background: "#FFFFFF"
+
+    - name: "Pop Party"
+      keywords: ["fun", "comic", "party", "colorful", "bright", "family"]
+      colors:
+        primary: "#FF69B4"
+        secondary: "#FFD700"
+        text: "#000000"
+        background: "#FFF0F5"
+
+    - name: "Default Blue"
+      keywords: ["default", "standard", "classic", "token"]
+      colors:
+        primary: "#4F46E5"
+        secondary: "#A5B4FC"
+        text: "#111827"
+        background: "#FFFFFF"
+
+    - name: "Galactic Neon"
+      keywords: ["galaxy", "space", "astro", "cosmic", "orbit", "alien"]
+      colors:
+        primary: "#6C63FF"
+        secondary: "#E1F5FE"
+        text: "#130F40"
+        background: "#F2F4F8"
+
+    - name: "Ancient Scroll"
+      keywords: ["ancient", "scroll", "myth", "magic", "wisdom", "celestial"]
+      colors:
+        primary: "#BBA87F"
+        secondary: "#FFF8DC"
+        text: "#2E2B1B"
+        background: "#FBF6EC"
+
+    - name: "Terminal Dark"
+      keywords: ["terminal", "cli", "console", "linux", "dark"]
+      colors:
+        primary: "#00FF00"
+        secondary: "#1B1B1B"
+        text: "#00FF00"
+        background: "#000000"
+
+    - name: "Emoji Rainbow"
+      keywords: ["emoji", "😂", "🔥", "🚀", "💥", "party", "lmao"]
+      colors:
+        primary: "#FF4A4A"
+        secondary: "#FFFF00"
+        text: "#111111"
+        background: "#FFF8E7"
+
+    - name: "Pink Pixel"
+      keywords: ["blocky", "minecraft", "pixel", "8bit", "party", "block"]
+      colors:
+        primary: "#FF66B2"
+        secondary: "#FFEEA8"
+        text: "#3B0A55"
+        background: "#FFF7FA"
+
+    - name: "Alpha Gains"
+      keywords: ["chad", "gym", "strong", "moon", "gains", "rocket", "pump"]
+      colors:
+        primary: "#FF4500"
+        secondary: "#FFD700"
+        text: "#000000"
+        background: "#F0F0F0"
+
+    - name: "Speed Blaze"
+      keywords: ["fast", "speed", "race", "lfg", "run", "flash"]
+      colors:
+        primary: "#FF3131"
+        secondary: "#F9D923"
+        text: "#101820"
+        background: "#FFFBE6"
+
+    - name: "Art Pop"
+      keywords: ["creativity", "art", "vivid", "expression", "paint", "right"]
+      colors:
+        primary: "#7D5FFF"
+        secondary: "#FEC8D8"
+        text: "#1F1F1F"
+        background: "#FFFBF0"
+
+    - name: "Utility Gray"
+      keywords: ["logic", "utility", "data", "smart", "function", "left"]
+      colors:
+        primary: "#8E8E93"
+        secondary: "#E5E5EA"
+        text: "#1C1C1E"
+        background: "#FFFFFF"
+
+    - name: "Golden Meme"
+      keywords: ["legendary", "gold", "rich", "elite", "top", "trophy"]
+      colors:
+        primary: "#FFD700"
+        secondary: "#FFF8DC"
+        text: "#000000"
+        background: "#FFFBE6"
+
+    Generate the HTML landing page using TailwindCSS and Google Fonts, applying:
+    - section order
+    - hero alignment
+    - logo position
+    - font style
+    - button style
+    - animation style
+    - color palette (background color, primary/secondary colors, text color)
+
+    Include the logo image using:
+    <img src="images/token_image.png" alt="{name} logo">
+
+    Save the page to 'output/sites/{symbol}/index.html'
 
   expected_output: >
     A styled, unique landing page for each token using TailwindCSS and Google Fonts,
-    saved to 'output/sites/{symbol}/index.html'
+    with a selected layout and color palette applied.
+    The result is saved to 'output/sites/{symbol}/index.html'
 
   agent: meme_token_site_designer
-
-
 ## LEGACY
 
 # build_meme_token_sites:
@@ -30,7 +395,7 @@ build_meme_token_sites:
 #     - Name, Symbol, Description, and Tagline
 #     - Token image located at 'output/images/{symbol}.png'
 
-#     The website structure should follow the layout below, 
+#     The website structure should follow the layout below,
 #     but the **visual style must be customized for each token** based on its description:
 
 #     ● Shared Section Structure:
@@ -70,7 +435,6 @@ build_meme_token_sites:
 #     - Each result is saved to 'output/sites/{symbol}/index.html'
 
 #   agent: meme_token_site_designer
-
 
 # package_sites_for_deployment:
 #   description: >

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpecCoin - KUNHEE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Comic Neue', sans-serif;
+        }
+
+        .shake {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        .right-glow {
+          background-image: linear-gradient(to right, #7D5FFF, #FEC8D8);
+          color: #1F1F1F;
+          padding: 15px 30px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .right-glow:hover {
+          box-shadow: 0 0 10px #7D5FFF, 0 0 20px #FEC8D8;
+        }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#7D5FFF',
+              secondary: '#FEC8D8',
+              text: '#1F1F1F',
+              background: '#FFFBF0',
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-background text-text">
+    <header class="container mx-auto py-6 px-4">
+        <div class="flex justify-between items-center">
+            <div>
+                <img src="images/token_image.png" alt="SpecCoin logo" class="h-12">
+            </div>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#about" class="hover:text-primary">About</a></li>
+                    <li><a href="#community" class="hover:text-primary">Community</a></li>
+                    <li><a href="#tokenomics" class="hover:text-primary">Tokenomics</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="container mx-auto py-16 px-4 flex flex-col md:flex-row items-center md:items-start justify-end">
+        <div class="md:w-1/2">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-right">SpecCoin - The Witty Token</h1>
+            <p class="text-lg mb-8 text-right">Intriguing, bold, and sleek. SpecCoin is designed for the modern meme enthusiast. Get ready for an unpredictable ride!</p>
+            <div class="text-right">
+                <button class="right-glow shake">Join the Community</button>
+            </div>
+        </div>
+        <div class="md:w-1/2">
+            <img src="images/token_image.png" alt="SpecCoin Hero Image" class="w-full rounded-lg">
+        </div>
+    </section>
+
+    <section id="community" class="container mx-auto py-12 px-4">
+        <h2 class="text-3xl font-bold mb-6 text-left">Community</h2>
+        <p class="text-lg mb-8">Join our vibrant and quirky community on Telegram and Discord. Share your memes, discuss strategies, and help us spread the word about SpecCoin!</p>
+        <div class="flex space-x-4">
+            <a href="#" class="text-primary hover:text-secondary">Telegram</a>
+            <a href="#" class="text-primary hover:text-secondary">Discord</a>
+        </div>
+    </section>
+
+    <section id="about" class="container mx-auto py-12 px-4">
+        <h2 class="text-3xl font-bold mb-6 text-left">About SpecCoin</h2>
+        <p class="text-lg mb-8">SpecCoin is more than just a meme token; it's a movement. We're building a community-driven ecosystem where wit and innovation come together. Our mission is to create a fun, engaging, and rewarding experience for all holders.</p>
+    </section>
+
+    <section id="tokenomics" class="container mx-auto py-12 px-4">
+        <h2 class="text-3xl font-bold mb-6 text-left">Tokenomics</h2>
+        <ul class="list-disc list-inside">
+            <li>Total Supply: 1,000,000,000 KUNHEE</li>
+            <li>50% Burned at Launch</li>
+            <li>5% Redistribution to Holders</li>
+            <li>5% Marketing & Development</li>
+        </ul>
+    </section>
+
+    <footer class="container mx-auto py-6 px-4 text-center">
+        <p>&copy; 2024 SpecCoin. All rights reserved.</p>
+    </footer>
+</body>
+</html>
