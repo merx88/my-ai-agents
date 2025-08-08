@@ -1,7 +1,5 @@
-[
-  {
-    "name": "UFS Shield",
-    "symbol": "DEFCON",
-    "mood_keywords": ["resilient", "alert", "playful", "strategic", "cyberpunk", "bold", "humorous"]
-  }
-]
+{
+  "name": "UFS Shield",
+  "symbol": "DEFCON",
+  "mood_keywords": ["defensive", "playful", "bold", "futuristic", "cyberpunk", "humorous", "vigilant", "trustworthy"]
+}

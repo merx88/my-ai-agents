@@ -12,171 +12,110 @@
             background-color: #000000;
             color: #33FF33;
         }
-
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 2rem;
         }
-
         .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding: 4rem;
+        }
+        .hero-content {
             text-align: right;
-            padding: 40px;
         }
-
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
+        .hero-image {
+            margin-left: -100px;
         }
-
-        .hero p {
-            font-size: 1.2em;
+        .hero-image img {
+            max-width: 400px;
+            height: auto;
         }
-
-        .about, .tokenomics, .community {
-            padding: 40px;
-            border-top: 1px solid #00FFCC;
+        .tokenomics, .community, .about {
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #00FFCC;
         }
-
+        .btn {
+            background-color: #00FFCC;
+            color: #0F0F0F;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #33FF33;
+        }
         .glitch {
-            overflow: hidden;
-            position: relative;
+            animation: glitch-animation 2s linear infinite;
         }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            overflow: hidden;
-            clip: rect(0, 900px, 0, 0);
-        }
-
-        .glitch::before {
-            left: 2px;
-            text-shadow: -1px 0 red;
-            animation: glitch-anim 2s infinite linear alternate-reverse;
-        }
-
-        .glitch::after {
-            left: -2px;
-            text-shadow: 1px 0 blue;
-            animation: glitch-anim2 2s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim {
+        @keyframes glitch-animation {
             0% {
-                clip: rect(29px, 9999px, 43px, 0);
-            }
-            10% {
-                clip: rect(22px, 9999px, 92px, 0);
+                transform: translate(0);
             }
             20% {
-                clip: rect(10px, 9999px, 4px, 0);
-            }
-            30% {
-                clip: rect(71px, 9999px, 73px, 0);
+                transform: translate(-2px, 2px);
             }
             40% {
-                clip: rect(90px, 9999px, 55px, 0);
-            }
-            50% {
-                clip: rect(43px, 9999px, 99px, 0);
+                transform: translate(-2px, -2px);
             }
             60% {
-                clip: rect(65px, 9999px, 99px, 0);
-            }
-            70% {
-                clip: rect(40px, 9999px, 12px, 0);
+                transform: translate(2px, 2px);
             }
             80% {
-                clip: rect(46px, 9999px, 68px, 0);
-            }
-            90% {
-                clip: rect(98px, 9999px, 35px, 0);
+                transform: translate(2px, -2px);
             }
             100% {
-                clip: rect(95px, 9999px, 87px, 0);
-            }
-        }
-
-        @keyframes glitch-anim2 {
-            0% {
-                clip: rect(76px, 9999px, 15px, 0);
-            }
-            10% {
-                clip: rect(55px, 9999px, 87px, 0);
-            }
-            20% {
-                clip: rect(13px, 9999px, 58px, 0);
-            }
-            30% {
-                clip: rect(64px, 9999px, 91px, 0);
-            }
-            40% {
-                clip: rect(43px, 9999px, 2px, 0);
-            }
-            50% {
-                clip: rect(63px, 9999px, 54px, 0);
-            }
-            60% {
-                clip: rect(23px, 9999px, 40px, 0);
-            }
-            70% {
-                clip: rect(78px, 9999px, 76px, 0);
-            }
-            80% {
-                clip: rect(18px, 9999px, 39px, 0);
-            }
-            90% {
-                clip: rect(43px, 9999px, 41px, 0);
-            }
-            100% {
-                clip: rect(25px, 9999px, 98px, 0);
+                transform: translate(0);
             }
         }
 
         .matrix-hack {
-            background-color: #0F0F0F;
-            color: #00FFCC;
+            background-color: #00FFCC;
+            color: #0F0F0F;
             border: 2px solid #00FFCC;
-            padding: 10px 20px;
+            padding: 0.5rem 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .matrix-hack:hover {
-            background-color: #00FFCC;
-            color: #0F0F0F;
+            background-color: #33FF33;
+            color: #000000;
+            border-color: #33FF33;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <section class="hero">
-            <img src="images/token_image.png" alt="UFS Shield logo" style="max-width: 100px; margin-bottom: 20px; float: right;">
-            <h1 class="glitch" data-text="UFS Shield">UFS Shield</h1>
-            <p>DEFCON: Your resilient shield in the chaotic crypto matrix. Strategic, bold, and always alert.</p>
-            <button class="matrix-hack">Enter the Matrix</button>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1 class="text-4xl font-bold mb-4 glitch">UFS Shield (DEFCON)</h1>
+                <p class="mb-6">Defending the future, one block at a time. Join the cyber revolution!</p>
+                <button class="btn matrix-hack">Enter the Matrix</button>
+            </div>
+            <div class="hero-image">
+                <img src="images/token_image.png" alt="UFS Shield logo">
+            </div>
         </section>
 
-        <section class="community">
-            <h2>Community</h2>
-            <p>Join the DEFCON community and help us build a more secure and playful crypto future. Together, we are resilient.</p>
+        <section id="community" class="community">
+            <h2 class="text-2xl font-bold mb-4">Community</h2>
+            <p>Join our vibrant community and help shape the future of DEFCON!</p>
+            <a href="#" class="text-blue-500 hover:underline">Join our Telegram</a>
         </section>
 
-        <section class="tokenomics">
-            <h2>Tokenomics</h2>
-            <p>Learn about the DEFCON token distribution, supply, and utility. Designed for strategic growth and long-term value.</p>
+        <section id="tokenomics" class="tokenomics">
+            <h2 class="text-2xl font-bold mb-4">Tokenomics</h2>
+            <p>Learn about the DEFCON token distribution and its role in the ecosystem.</p>
         </section>
 
-        <section class="about">
-            <h2>About</h2>
-            <p>UFS Shield (DEFCON) is more than just a token; it's a movement towards a safer, more humorous, and strategically sound crypto world.</p>
+        <section id="about" class="about">
+            <h2 class="text-2xl font-bold mb-4">About UFS Shield</h2>
+            <p>UFS Shield is a cutting-edge project focused on decentralized security solutions.</p>
         </section>
     </div>
 </body>
